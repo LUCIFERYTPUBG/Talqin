@@ -4,7 +4,7 @@ import { GraduationCap, ArrowRight, ArrowLeft, Bell, BookOpen, Brain, Check, Che
 const slides = [
   { title:'Jonli ovozli darslar', desc:'Talabalar bilan real vaqt rejimida dars o‘ting va bilim almashing.', icon:'mic' },
   { title:'Zakovat o‘yini', desc:'Bilimingizni sinang, savollar bering va jamoa bilan bellashing.', icon:'trophy' },
-  { title:'Bank ishi darslari', desc:'Yo‘nalishingiz bo‘yicha darslar, muhokamalar va amaliy bilimlar bir joyda.', icon:'books' }
+  { title:'Bank ishi darslari', desc:'Bank ishi fanlarini o‘rganing, mavzularni muhokama qiling va bilimlaringizni amaliyotda mustahkamlang.', icon:'books' }
 ]
 const rooms = [
   {title:'Bank tizimi va uning tuzilishi',host:'Dilshod S.',count:42,tag:'Bank ishi'},
@@ -26,8 +26,37 @@ function AudioIllustration() {
     alt="Qizil professional mikrofon, quloqchin va ovoz to‘lqinlari"
   />
 }
+function BankStudyIllustration(){
+ return <svg className="bankStudySvg" viewBox="0 0 300 250" role="img" aria-label="Bank binosi, ochiq kitob va oltin tangalar">
+  <defs>
+   <linearGradient id="bankRed" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#ef334e"/><stop offset="1" stopColor="#a90d20"/></linearGradient>
+   <linearGradient id="bankPage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff"/><stop offset="1" stopColor="#f7e5e9"/></linearGradient>
+   <linearGradient id="bankGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#ffe18a"/><stop offset="1" stopColor="#d99218"/></linearGradient>
+  </defs>
+  <ellipse cx="150" cy="222" rx="94" ry="13" fill="#a90d20" opacity=".10"/>
+  <path d="M34 126 C78 84 117 95 150 123 C183 95 222 84 266 126" fill="none" stroke="#f3b5c0" strokeWidth="5" strokeLinecap="round"/>
+  <g className="bankStudyBuilding">
+   <path d="M83 72 L150 34 L217 72 Z" fill="url(#bankRed)" stroke="#8e0b1e" strokeWidth="4" strokeLinejoin="round"/>
+   <rect x="87" y="73" width="126" height="12" rx="4" fill="#fff" stroke="#b70f22" strokeWidth="3"/>
+   <g fill="#fff2f4" stroke="#b70f22" strokeWidth="3">
+    <rect x="96" y="87" width="18" height="46" rx="7"/><rect x="141" y="87" width="18" height="46" rx="7"/><rect x="186" y="87" width="18" height="46" rx="7"/>
+   </g>
+   <path d="M80 137 H220 V148 H80 Z" fill="url(#bankRed)" stroke="#8e0b1e" strokeWidth="3"/>
+  </g>
+  <g className="bankStudyBook">
+   <path d="M48 151 Q94 132 150 159 Q206 132 252 151 L252 205 Q204 190 150 216 Q96 190 48 205 Z" fill="url(#bankPage)" stroke="#a90d20" strokeWidth="4" strokeLinejoin="round"/>
+   <path d="M150 159 V216" stroke="#c47a88" strokeWidth="3"/>
+   <g stroke="#dfb4bd" strokeWidth="3" strokeLinecap="round"><path d="M65 166 Q99 157 126 171"/><path d="M65 179 Q99 170 126 184"/><path d="M174 171 Q201 157 235 166"/><path d="M174 184 Q201 170 235 179"/></g>
+  </g>
+  <g className="bankStudyCoins" stroke="#b87810" strokeWidth="2">
+   <ellipse cx="231" cy="129" rx="18" ry="7" fill="url(#bankGold)"/><path d="M213 129 V145 Q231 155 249 145 V129" fill="#e8aa31"/><ellipse cx="231" cy="145" rx="18" ry="7" fill="#f7ca5b"/>
+   <ellipse cx="68" cy="133" rx="15" ry="6" fill="url(#bankGold)"/><path d="M53 133 V145 Q68 153 83 145 V133" fill="#e8aa31"/><ellipse cx="68" cy="145" rx="15" ry="6" fill="#f7ca5b"/>
+  </g>
+  <circle cx="58" cy="83" r="13" fill="url(#bankGold)" stroke="#b87810" strokeWidth="2"/><path d="M58 76 V90 M52 83 H64" stroke="#fff3c7" strokeWidth="2.5" strokeLinecap="round"/>
+ </svg>
+}
 function Art({type}) {
-  const icon=type==='mic'?<AudioIllustration/>:type==='trophy'?<><img className="trophyIllustration" src="/talqin-trophy.png?v=2" alt="TALQIN Zakovat kubogi" onError={e=>{e.currentTarget.dataset.failed="true"}}/><Trophy className="trophyFallback" size={130} aria-hidden="true"/></>:type==='bank'?<LandmarkFallback/>:<BookOpen size={130}/>
+  const icon=type==='mic'?<AudioIllustration/>:type==='trophy'?<><img className="trophyIllustration" src="/talqin-trophy.png?v=2" alt="TALQIN Zakovat kubogi" onError={e=>{e.currentTarget.dataset.failed="true"}}/><Trophy className="trophyFallback" size={130} aria-hidden="true"/></>:type==='bank'?<LandmarkFallback/>:<BankStudyIllustration/>
   return <div className={'art art-'+type}><div className="artHalo"/><div className="artIcon">{icon}</div><div className="artShadow"/></div>
 }
 function LandmarkFallback(){return <div className="bankIcon"><div className="roof"/><div className="columns"><i/><i/><i/><i/></div><div className="base"/></div>}
