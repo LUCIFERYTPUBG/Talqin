@@ -136,3 +136,99 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 @media(prefers-reduced-motion:reduce){
  .splashGlow,.splash .brandLarge,.splash p{animation:none!important}
 }
+
+
+/* Final splash identity: dedicated white logo lockup, not the shared header logo */
+.splash{
+  isolation:isolate;
+  background:linear-gradient(145deg,#8e071c 0%,#5f0618 48%,#a90c27 100%);
+  gap:0;
+}
+.splash .splashGlow{
+  z-index:-1;
+  background:
+    radial-gradient(ellipse at 50% 43%,#ed1e3e80,transparent 36%),
+    radial-gradient(ellipse at 5% 10%,#ff385c55,transparent 38%),
+    radial-gradient(ellipse at 95% 88%,#d8173b70,transparent 42%);
+}
+.splashBrand{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+  color:#fff!important;
+  opacity:1!important;
+  animation:talqinBrandEnter .8s cubic-bezier(.2,.8,.2,1) both;
+}
+.splashLogoMark{
+  width:104px;height:104px;
+  display:grid;place-items:center;
+  border-radius:30px;
+  color:#fff!important;
+  background:linear-gradient(145deg,#ffffff28,#ffffff0b);
+  border:1px solid #ffffff70;
+  box-shadow:0 12px 35px #2c000f66,inset 0 1px 0 #ffffff85,0 0 30px #ff335b35;
+  backdrop-filter:blur(12px);
+  position:relative;
+}
+.splashLogoMark::before{
+  content:"";position:absolute;inset:7px;border-radius:24px;
+  border:1px solid #ffffff20;pointer-events:none;
+}
+.splashLogoMark svg{
+  color:#fff!important;stroke:#fff!important;
+  filter:drop-shadow(0 3px 8px #39000e60);
+}
+.splashBrand>b{
+  display:block;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  font-family:Manrope,system-ui,sans-serif;
+  font-size:44px;line-height:1;
+  font-weight:900;letter-spacing:2px;
+  text-shadow:0 4px 20px #28000d66;
+}
+.splash p{
+  margin:22px 0 0;
+  color:#fff!important;
+  opacity:1!important;
+  font-size:14px;font-weight:600;
+  letter-spacing:.2px;
+  text-align:center;
+}
+.splashDivider{
+  width:150px;height:2px;
+  margin:25px 0 78px;
+  background:linear-gradient(90deg,transparent,#ffffff55,transparent);
+  display:flex;align-items:center;justify-content:center;
+}
+.splashDivider i{
+  width:38px;height:3px;border-radius:99px;
+  background:#ff526e;box-shadow:0 0 14px #ff526e;
+}
+.splash .loader{
+  margin:0;
+  width:38px;height:38px;
+  border:3px solid #ffffff30;border-top-color:#fff;
+  border-right-color:#ff5873;
+  border-radius:50%;
+  box-shadow:0 0 0 7px #ffffff0b,0 0 24px #ff294b30;
+}
+.splash small{
+  margin-top:16px;
+  color:#fff!important;
+  font-size:11px;font-weight:600;
+  letter-spacing:.25px;
+}
+@keyframes talqinBrandEnter{
+  from{opacity:0;transform:translateY(14px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@media(max-height:720px){
+ .splashLogoMark{width:82px;height:82px;border-radius:25px}
+ .splashLogoMark svg{width:35px;height:35px}
+ .splashBrand>b{font-size:38px}
+ .splashDivider{margin-bottom:48px}
+}
+@media(prefers-reduced-motion:reduce){.splashBrand{animation:none!important}}
