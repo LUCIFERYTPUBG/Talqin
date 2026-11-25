@@ -29,3 +29,56 @@
 :root{--talqin-main-font:'Manrope',system-ui,sans-serif;--talqin-button-font:'Roboto Condensed','Arial Narrow',sans-serif;font-family:var(--talqin-main-font)}
 h1,h2,h3,h4,h5,h6,.slideText h1,.login h1,.greeting h2,.bankBanner b,.brand b,.sectionTitle,.cardTitle{font-family:var(--talqin-main-font);font-weight:800}
 button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab button,.navItem button{font-family:var(--talqin-button-font);font-weight:800;letter-spacing:.15px}
+
+
+/* TALQIN — smooth rounded buttons + subtle animated icons */
+.primary{
+  border-radius:999px;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:linear-gradient(110deg,#df2038 0%,#c4142c 48%,#97091f 100%);
+  box-shadow:0 8px 20px #b70f2228,inset 0 1px 0 #ffffff55;
+  transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;
+}
+.primary::before{
+  content:"";position:absolute;z-index:-1;inset:-25% auto -25% -55%;width:34%;
+  transform:skewX(-18deg);
+  background:linear-gradient(90deg,transparent,#ffffff22,#ffffff70,#ffffff22,transparent);
+  animation:talqinCtaShine 5.2s ease-in-out infinite;
+  pointer-events:none;
+}
+.primary::after{
+  content:"";position:absolute;inset:1px;border-radius:inherit;
+  border:1px solid #ffffff30;pointer-events:none;
+}
+.primary svg{animation:talqinCtaIcon 2s ease-in-out infinite;transition:transform .22s ease}
+.primary:hover{transform:translateY(-1px);box-shadow:0 12px 25px #b70f2238,inset 0 1px 0 #ffffff66;filter:saturate(1.06)}
+.primary:hover svg{transform:translateX(4px)}
+.primary:active{transform:scale(.985);box-shadow:0 4px 10px #b70f2230}
+.tiles button{border-radius:22px;transition:transform .22s ease,box-shadow .22s ease}
+.tiles button svg{transition:transform .25s ease;animation:talqinTileIcon 3.4s ease-in-out infinite}
+.tiles button:nth-child(2) svg{animation-delay:.35s}
+.tiles button:nth-child(3) svg{animation-delay:.7s}
+.tiles button:nth-child(4) svg{animation-delay:1.05s}
+.tiles button:hover{transform:translateY(-3px);box-shadow:0 12px 22px #271a2020}
+.tiles button:hover svg{transform:translateY(-3px) rotate(-5deg)}
+.roomRow,.materialRow{border-radius:18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.roomRow:hover,.materialRow:hover{transform:translateY(-1px);border-color:#f0c5cc;box-shadow:0 6px 16px #9b102010}
+.roomRow .roomIcon svg,.materialRow>svg{transition:transform .22s ease}
+.roomRow:hover .roomIcon svg,.materialRow:hover>svg{transform:scale(1.08) rotate(-4deg)}
+.bottom button svg{transition:transform .22s ease}
+.bottom .navOn svg{animation:talqinNavIcon 2.4s ease-in-out infinite}
+.bottom button:active svg{transform:scale(.88)}
+.roleSwitch,.roleSwitch button{border-radius:999px}
+.field{border-radius:18px}
+.social button{transition:transform .2s ease,box-shadow .2s ease}
+.social button:hover{transform:translateY(-2px);box-shadow:0 6px 14px #21191d12}
+@keyframes talqinCtaShine{0%,20%{left:-55%;opacity:0}32%{opacity:1}58%,100%{left:135%;opacity:0}}
+@keyframes talqinCtaIcon{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
+@keyframes talqinTileIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes talqinNavIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce){
+ .primary::before,.primary svg,.tiles button svg,.bottom .navOn svg{animation:none!important}
+ .primary,.primary svg,.tiles button,.tiles button svg,.roomRow,.materialRow,.roomRow .roomIcon svg,.materialRow>svg,.bottom button svg,.social button{transition:none!important}
+}
