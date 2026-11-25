@@ -24,3 +24,9 @@
 .art-mic .audioIllustration{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;mix-blend-mode:normal;border:0;box-shadow:none}
 .art-mic .artHalo{width:78%;height:72%;background:radial-gradient(ellipse,#f9e3e6 0%,#f8edf0 48%,transparent 74%);filter:blur(7px)}
 .art-mic .artShadow{bottom:12%;width:58%;height:14px;background:#b70f2226;filter:blur(9px)}
+
+/* TALQIN typography: Extra Bold for primary text, Condensed Bold for controls */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@600;700;800;900&display=swap');
+:root{--talqin-main-font:'Manrope',system-ui,sans-serif;--talqin-button-font:'Roboto Condensed','Arial Narrow',sans-serif;font-family:var(--talqin-main-font)}
+h1,h2,h3,h4,h5,h6,.slideText h1,.login h1,.greeting h2,.bankBanner b,.brand b,.sectionTitle,.cardTitle{font-family:var(--talqin-main-font);font-weight:800}
+button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab button,.navItem button{font-family:var(--talqin-button-font);font-weight:800;letter-spacing:.15px}
