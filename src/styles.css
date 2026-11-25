@@ -232,3 +232,97 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
  .splashDivider{margin-bottom:48px}
 }
 @media(prefers-reduced-motion:reduce){.splashBrand{animation:none!important}}
+
+
+/* TALQIN onboarding screen — refreshed visual hierarchy */
+.onboard{
+  background:#fbfafc;
+  padding:22px 22px calc(22px + env(safe-area-inset-bottom));
+  isolation:isolate;
+}
+.onboard::before,.onboard::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:300px;height:230px;border-radius:50%;
+  background:radial-gradient(ellipse,#fce3e8 0%,#fff0f3 38%,transparent 72%);
+}
+.onboard::before{top:-130px;left:-150px}
+.onboard::after{right:-175px;bottom:100px;background:radial-gradient(ellipse,#fbe0e6 0%,#fff0f3 42%,transparent 72%)}
+.onboardTop{
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:40px;gap:10px;
+}
+.onboardTop .brand{font-size:19px;letter-spacing:-1.2px;font-weight:900;color:#a90d20}
+.onboardTop .brand svg{width:23px;height:23px}
+.onboard .skip{
+  display:flex;align-items:center;gap:3px;
+  padding:9px 12px;border:1px solid #f2dfe4;border-radius:999px;
+  background:#fff7f9;color:#9f1022;font-size:10px;font-weight:800;
+  white-space:nowrap;
+}
+.onboard .slideArt{
+  height:37dvh;min-height:230px;max-height:350px;
+  margin:1.5dvh 0 0;flex:0 0 auto;
+}
+.onboard .art{min-height:0}
+.onboard .artHalo{
+  width:78%;height:76%;
+  background:radial-gradient(ellipse,#f9dce3 0%,#fff0f3 42%,transparent 72%);
+  filter:blur(5px);
+}
+.onboard .art-trophy .artIcon{
+  width:min(56vw,224px);height:min(56vw,224px);
+  border-radius:42px;
+  background:linear-gradient(145deg,#ffffffed,#fff2f5d9);
+  border:1px solid #ffffff;
+  box-shadow:0 16px 38px #b70f221a,inset 0 1px 0 #ffffff,0 0 0 8px #f8e7eb80;
+  color:#b70f22;
+  animation:talqinTrophyFloat 4s ease-in-out infinite;
+}
+.onboard .art-trophy .artIcon svg{
+  width:104px;height:104px;
+  fill:#c9142e;stroke:#850b20;stroke-width:1.55;
+  filter:drop-shadow(0 10px 9px #920d2428);
+}
+.onboard .art-trophy .artShadow{bottom:12%;width:42%;height:13px;background:#b70f2220}
+.onboard .slideText{
+  width:100%;max-width:350px;
+  text-align:center;margin:0 auto;
+}
+.onboard .slideText h1{
+  color:#25181d;font-size:25px;line-height:1.2;
+  letter-spacing:-.65px;font-weight:900;margin:8px 0 10px;
+}
+.onboard .slideText p{
+  color:#6d626a;font-size:13px;line-height:1.65;
+  font-weight:500;max-width:340px;margin:0 auto;
+}
+.onboard .dots{gap:8px;margin:25px 0 20px}
+.onboard .dot,.onboard .dotOn{height:7px;width:8px;background:#d8cfd4;border-radius:99px}
+.onboard .dotOn{width:22px;background:#c4142b;box-shadow:0 3px 8px #c4142b30}
+.onboard .primary{
+  height:58px;min-height:58px;border-radius:999px;
+  font-size:14px;font-weight:900;letter-spacing:.15px;
+  box-shadow:0 10px 22px #b70f2230,inset 0 1px 0 #ffffff70;
+}
+.onboard .primary svg{width:20px;height:20px}
+@keyframes talqinTrophyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(max-height:760px){
+ .onboard{padding-top:14px;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+ .onboard .slideArt{height:33dvh;min-height:190px;margin-top:1dvh}
+ .onboard .art-trophy .artIcon{width:min(48vw,190px);height:min(48vw,190px);border-radius:34px}
+ .onboard .art-trophy .artIcon svg{width:88px;height:88px}
+ .onboard .slideText h1{font-size:22px}
+ .onboard .dots{margin:19px 0 15px}
+ .onboard .primary{height:53px;min-height:53px}
+}
+@media(max-width:360px){
+ .onboard{padding-left:18px;padding-right:18px}
+ .onboardTop .brand{font-size:17px}
+ .onboard .skip{font-size:9px;padding:8px 9px}
+ .onboard .slideArt{height:35dvh}
+ .onboard .art-trophy .artIcon{width:190px;height:190px;border-radius:35px}
+ .onboard .art-trophy .artIcon svg{width:88px;height:88px}
+ .onboard .slideText h1{font-size:21px}
+ .onboard .slideText p{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.onboard .art-trophy .artIcon{animation:none!important}}
