@@ -363,3 +363,62 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 .onboard .trophyFallback{display:none;flex:0 0 auto;color:#b70f22;fill:#c9142e;stroke:#850b20;filter:drop-shadow(0 10px 9px #920d2428)}
 .onboard .trophyIllustration[data-failed="true"]{display:none}
 .onboard .trophyIllustration[data-failed="true"]+.trophyFallback{display:block}
+
+
+/* Third onboarding slide: bank studies — tailored illustration and tighter composition */
+.onboard-slide-3 .slideArt{
+  height:31dvh;
+  min-height:220px;
+  max-height:310px;
+  margin:0;
+}
+.onboard-slide-3 .art-books .artIcon{
+  width:min(76vw,300px);
+  height:min(70vw,270px);
+  filter:none;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  animation:none;
+}
+.onboard-slide-3 .art-books .artHalo{
+  width:84%;height:80%;
+  background:radial-gradient(ellipse,#f8dfe5 0%,#fff0f3 48%,transparent 74%);
+  filter:blur(8px);
+}
+.onboard-slide-3 .bankStudySvg{
+  display:block;
+  width:100%;height:100%;
+  overflow:visible;
+  fill:none;
+  filter:drop-shadow(0 10px 12px #a90d201b);
+}
+.onboard-slide-3 .bankStudyBuilding{transform-origin:150px 90px;animation:bankStudyRise .7s cubic-bezier(.2,.8,.2,1) both}
+.onboard-slide-3 .bankStudyBook{transform-origin:150px 185px;animation:bankStudyBook .8s .08s cubic-bezier(.2,.8,.2,1) both}
+.onboard-slide-3 .bankStudyCoins{transform-origin:230px 140px;animation:bankStudyCoin .8s .16s ease both}
+.onboard-slide-3 .slideText{margin-top:0;max-width:360px}
+.onboard-slide-3 .slideText h1{
+  font-size:clamp(23px,6vw,29px);
+  letter-spacing:-.8px;
+  margin:4px 0 9px;
+}
+.onboard-slide-3 .slideText p{
+  font-size:13px;
+  line-height:1.6;
+  max-width:340px;
+}
+.onboard-slide-3 .dots{margin:22px 0 18px}
+.onboard-slide-3 .primary{margin-top:auto}
+@keyframes bankStudyRise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bankStudyBook{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes bankStudyCoin{from{opacity:0;transform:translateY(5px) rotate(-8deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+@media(max-height:760px){
+ .onboard-slide-3 .slideArt{height:29dvh;min-height:190px;max-height:250px}
+ .onboard-slide-3 .art-books .artIcon{width:min(70vw,250px);height:min(65vw,230px)}
+ .onboard-slide-3 .slideText h1{font-size:23px}
+ .onboard-slide-3 .dots{margin:18px 0 14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .onboard-slide-3 .bankStudyBuilding,.onboard-slide-3 .bankStudyBook,.onboard-slide-3 .bankStudyCoins{animation:none!important}
+}
