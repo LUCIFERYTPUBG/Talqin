@@ -82,3 +82,57 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
  .primary::before,.primary svg,.tiles button svg,.bottom .navOn svg{animation:none!important}
  .primary,.primary svg,.tiles button,.tiles button svg,.roomRow,.materialRow,.roomRow .roomIcon svg,.materialRow>svg,.bottom button svg,.social button{transition:none!important}
 }
+
+
+/* Splash screen contrast and polished loading state */
+.splash{
+  background:radial-gradient(ellipse at 50% 38%,#c91631 0%,#9e0b22 42%,#650416 100%);
+  color:#fff;
+}
+.splashGlow{
+  inset:-12%;
+  background:
+    radial-gradient(ellipse at 22% 25%,#f12c48a8,transparent 38%),
+    radial-gradient(ellipse at 82% 72%,#b10e2a80,transparent 42%),
+    radial-gradient(ellipse at 50% 100%,#3b0615aa,transparent 50%);
+  animation:talqinSplashGlow 7s ease-in-out infinite alternate;
+}
+.splash .brandLarge{
+  color:#fff;
+  text-shadow:0 5px 24px #32000e55;
+  animation:talqinSplashLogo .75s cubic-bezier(.2,.8,.2,1) both;
+}
+.splash .brandLarge svg{
+  color:#fff;
+  filter:drop-shadow(0 3px 8px #32000e55);
+}
+.splash p{
+  color:#fff;
+  font-weight:600;
+  letter-spacing:.15px;
+  text-shadow:0 2px 12px #32000e55;
+  animation:talqinSplashText .8s .12s ease both;
+}
+.splash .loader{
+  width:34px;height:34px;
+  border-width:3px;
+  border-color:#ffffff40;
+  border-top-color:#fff;
+  box-shadow:0 0 0 6px #ffffff0d;
+}
+.splash small{color:#ffe9ed;letter-spacing:.2px}
+@keyframes talqinSplashLogo{
+  from{opacity:0;transform:translateY(12px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes talqinSplashText{
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes talqinSplashGlow{
+  from{transform:scale(1);opacity:.82}
+  to{transform:scale(1.08);opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+ .splashGlow,.splash .brandLarge,.splash p{animation:none!important}
+}
