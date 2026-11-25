@@ -357,3 +357,10 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
  .onboard .art-trophy .artIcon{width:min(72vw,245px);height:min(72vw,245px)}
 }
 @media(prefers-reduced-motion:reduce){.onboard .trophyIllustration{animation:none!important}}
+
+
+/* Trophy image reliability: cache-busted PNG with icon fallback if the asset fails */
+.onboard .trophyIllustration{display:block;min-width:100%;min-height:100%;object-fit:contain}
+.onboard .trophyFallback{display:none;flex:0 0 auto;color:#b70f22;fill:#c9142e;stroke:#850b20;filter:drop-shadow(0 10px 9px #920d2428)}
+.onboard .trophyIllustration[data-failed="true"]{display:none}
+.onboard .trophyIllustration[data-failed="true"]+.trophyFallback{display:block}
