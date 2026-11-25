@@ -22,7 +22,7 @@ function Logo({large=false}) { return <div className={large?'brand brandLarge':'
 function AudioIllustration() {
   return <img
     className="audioIllustration"
-    src="/talqin-audio-sharp.webp"
+    src="/talqin-audio-vector.svg"
     alt="Qizil professional mikrofon, quloqchin va ovoz to‘lqinlari"
   />
 }
