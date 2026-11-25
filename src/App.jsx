@@ -20,49 +20,11 @@ const questions = [
 ]
 function Logo({large=false}) { return <div className={large?'brand brandLarge':'brand'}><GraduationCap/><b>TALQIN</b></div> }
 function AudioIllustration() {
-  return <svg className="audioIllustration" viewBox="0 0 360 360" role="img" aria-label="Quloqchinli professional mikrofon va ovoz to‘lqinlari">
-    <defs>
-      <linearGradient id="micBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f04458"/><stop offset=".38" stopColor="#b50d29"/><stop offset=".72" stopColor="#75091d"/><stop offset="1" stopColor="#d91d39"/></linearGradient>
-      <linearGradient id="micLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ff8b98"/><stop offset=".3" stopColor="#d8203b"/><stop offset="1" stopColor="#77091d"/></linearGradient>
-      <linearGradient id="headBand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#6e1029"/><stop offset=".5" stopColor="#bd1c39"/><stop offset="1" stopColor="#4b0a1b"/></linearGradient>
-      <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#72091e"/><stop offset=".5" stopColor="#f06c7b"/><stop offset="1" stopColor="#760b20"/></linearGradient>
-      <filter id="micShadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur stdDeviation="7"/></filter>
-      <pattern id="grille" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.65" fill="#65091c" opacity=".82"/></pattern>
-    </defs>
-    <ellipse cx="180" cy="315" rx="103" ry="13" fill="#b70f22" opacity=".16" filter="url(#micShadow)"/>
-    <g fill="none" stroke="#ee7081" strokeLinecap="round" opacity=".9">
-      <path d="M38 157v34 M52 139v70 M66 121v106 M80 145v58" strokeWidth="7"/>
-      <path d="M280 145v58 M294 121v106 M308 139v70 M322 157v34" strokeWidth="7"/>
-    </g>
-    <path d="M91 179v-48c0-52 39-91 89-91s89 39 89 91v48" fill="none" stroke="#f2a1aa" strokeWidth="19" strokeLinecap="round" opacity=".34"/>
-    <path d="M91 179v-48c0-52 39-91 89-91s89 39 89 91v48" fill="none" stroke="url(#headBand)" strokeWidth="14" strokeLinecap="round"/>
-    <path d="M99 130c4-43 37-73 81-73s77 30 81 73" fill="none" stroke="#f87988" strokeWidth="3" strokeLinecap="round" opacity=".65"/>
-    <g>
-      <rect x="77" y="151" width="48" height="91" rx="19" fill="#5d0b20"/>
-      <rect x="81" y="147" width="44" height="87" rx="17" fill="url(#headBand)"/>
-      <rect x="87" y="157" width="30" height="68" rx="12" fill="#2e0b16"/>
-      <rect x="235" y="147" width="44" height="87" rx="17" fill="url(#headBand)"/>
-      <rect x="235" y="157" width="30" height="68" rx="12" fill="#2e0b16"/>
-      <path d="M88 160v56" stroke="#f17b89" strokeWidth="3" strokeLinecap="round" opacity=".7"/>
-      <path d="M272 160v56" stroke="#f17b89" strokeWidth="3" strokeLinecap="round" opacity=".7"/>
-    </g>
-    <g>
-      <rect x="146" y="99" width="68" height="121" rx="31" fill="#560819"/>
-      <rect x="150" y="94" width="60" height="119" rx="29" fill="url(#micBody)" stroke="#7e0a1d" strokeWidth="2"/>
-      <rect x="155" y="101" width="50" height="74" rx="24" fill="#f45a6d" opacity=".42"/>
-      <rect x="153" y="101" width="54" height="73" rx="24" fill="url(#grille)"/>
-      <path d="M153 180h54v14c0 17-12 31-27 31s-27-14-27-31z" fill="url(#micLight)" stroke="#71091d" strokeWidth="2"/>
-      <path d="M157 184h46" stroke="#ff9aa5" strokeWidth="3" strokeLinecap="round" opacity=".75"/>
-      <path d="M144 177c-10 10-15 22-15 36 0 30 23 54 51 54s51-24 51-54c0-14-5-26-15-36" fill="none" stroke="url(#silver)" strokeWidth="8" strokeLinecap="round"/>
-      <path d="M145 187c-6 8-9 16-9 26 0 26 20 46 44 46s44-20 44-46c0-10-3-18-9-26" fill="none" stroke="#f86c7e" strokeWidth="2.5" strokeLinecap="round"/>
-      <path d="M180 264v28" stroke="url(#micBody)" strokeWidth="13" strokeLinecap="round"/>
-      <path d="M180 289v9" stroke="#7d0a1d" strokeWidth="13" strokeLinecap="round"/>
-      <ellipse cx="180" cy="303" rx="54" ry="11" fill="#74091e"/>
-      <path d="M126 300c0-6 24-11 54-11s54 5 54 11v9c0 7-24 13-54 13s-54-6-54-13z" fill="url(#micBody)"/>
-      <ellipse cx="180" cy="300" rx="54" ry="11" fill="#e83a52"/>
-      <ellipse cx="180" cy="300" rx="43" ry="6" fill="#ff7786" opacity=".45"/>
-    </g>
-  </svg>
+  return <img
+    className="audioIllustration"
+    src="/talqin-audio-illustration.jpg"
+    alt="Qizil professional mikrofon, quloqchin va ovoz to‘lqinlari"
+  />
 }
 function Art({type}) {
   const icon=type==='mic'?<AudioIllustration/>:type==='trophy'?<Trophy size={130}/>:type==='bank'?<LandmarkFallback/>:<BookOpen size={130}/>
