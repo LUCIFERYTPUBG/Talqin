@@ -326,3 +326,34 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
  .onboard .slideText p{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.onboard .art-trophy .artIcon{animation:none!important}}
+
+
+/* Uploaded trophy PNG from /public/talqin-trophy.png */
+.onboard .art-trophy .artIcon{
+  width:min(82vw,330px);
+  height:min(82vw,330px);
+  max-height:100%;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  filter:none;
+  animation:none;
+}
+.onboard .trophyIllustration{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 12px 14px #9b102628);
+  animation:talqinTrophyFloat 4s ease-in-out infinite;
+}
+.onboard .art-trophy .artShadow{bottom:9%;width:46%;height:14px}
+@media(max-height:760px){
+ .onboard .art-trophy .artIcon{width:min(70vw,275px);height:min(70vw,275px)}
+}
+@media(max-width:360px){
+ .onboard .art-trophy .artIcon{width:min(72vw,245px);height:min(72vw,245px)}
+}
+@media(prefers-reduced-motion:reduce){.onboard .trophyIllustration{animation:none!important}}
