@@ -546,3 +546,43 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 .login-redesign .teacherAccessNote{border-radius:18px;background:#fff;border-color:#eee2e7;box-shadow:0 6px 18px #29131a05}
 .login-redesign .teacherAdminHint{padding:0 16px}
 @media(max-height:760px){.login-redesign{padding-top:16px}.login-redesign> .brand{margin:10px auto 14px}.login-redesign .roleSwitch{margin:17px 0}.login-redesign .socialDivider{margin:16px 0 12px}.login-redesign .authBottomText{margin-top:18px}}
+
+/* Interactive auth motion and helper controls */
+.login-redesign .authModeSwitch button{position:relative;overflow:hidden}
+.login-redesign .authModeSwitch button:active,.login-redesign .roleSwitch button:active{transform:scale(.975)}
+.login-redesign .field{animation:talqinFieldIn .42s cubic-bezier(.2,.8,.2,1) both}
+.login-redesign .field:nth-of-type(1){animation-delay:.03s}
+.login-redesign .field:nth-of-type(2){animation-delay:.08s}
+.login-redesign .field:nth-of-type(3){animation-delay:.13s}
+.login-redesign .field:nth-of-type(4){animation-delay:.18s}
+.login-redesign .authOptions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 3px 15px;min-height:24px}
+.login-redesign .rememberOption{display:inline-flex;align-items:center;gap:8px;color:#7e747e;font-size:12px;cursor:pointer;user-select:none}
+.login-redesign .rememberOption input{position:absolute;opacity:0;width:1px;height:1px}
+.login-redesign .customCheck{width:17px;height:17px;border:1.5px solid #d8cfd8;border-radius:5px;background:#fff;display:grid;place-items:center;color:#fff;transition:all .2s}
+.login-redesign .rememberOption input:checked+.customCheck{background:#b5102d;border-color:#b5102d;box-shadow:0 3px 8px #b5102d28}
+.login-redesign .customCheck svg{opacity:0;transform:scale(.5);transition:all .18s}
+.login-redesign .rememberOption input:checked+.customCheck svg{opacity:1;transform:scale(1)}
+.login-redesign .rememberOption input:focus-visible+.customCheck{outline:3px solid #c41a351c;outline-offset:2px}
+.login-redesign .forgotLink{border:0;background:transparent;padding:4px 0;color:#ad102b;font-size:12px;font-weight:800;cursor:pointer}
+.login-redesign .secureCaption{display:inline-flex;align-items:center;gap:4px;color:#9b8f99;font-size:11px}
+.login-redesign .authSubmit{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .18s,box-shadow .25s,filter .2s}
+.login-redesign .authSubmit:before{content:"";position:absolute;top:-70%;left:-35%;width:25%;height:240%;transform:rotate(22deg);background:linear-gradient(90deg,transparent,#ffffff25,transparent);transition:left .55s}
+.login-redesign .authSubmit:hover:before{left:120%}
+.login-redesign .authSubmit:active{transform:scale(.985);box-shadow:0 4px 12px #b70f2225}
+.login-redesign .authSubmit:disabled{opacity:.94;cursor:wait}
+.login-redesign .authSpinner,.login-redesign .miniSpinner{display:inline-block;width:18px;height:18px;border:2px solid #ffffff55;border-top-color:#fff;border-radius:50%;animation:talqinSpin .72s linear infinite}
+.login-redesign .miniSpinner{width:14px;height:14px;border-color:#b5102d30;border-top-color:#b5102d}
+.login-redesign .authFeedback{display:flex;align-items:flex-start;gap:9px;margin:12px 0 2px;padding:12px 14px;border-radius:14px;font-size:12px;line-height:1.45;animation:talqinFeedbackIn .28s ease-out both}
+.login-redesign .authFeedback.error{background:#fff0f2;color:#a20d28;border:1px solid #f4d4dc;animation:talqinFeedbackIn .28s ease-out,talqinShake .34s .12s}
+.login-redesign .authFeedback.info{background:#fff;border:1px solid #eee5eb;color:#776c78;box-shadow:0 5px 16px #26111a08}
+.login-redesign .authFeedback.loading{background:#fff7f8;border:1px solid #f4dfe4;color:#a10d27}
+.login-redesign .authFeedback svg{flex:0 0 auto;margin-top:1px}
+.login-redesign .teacherAdminHint{display:flex;align-items:center;justify-content:center;gap:6px}
+.login-redesign .socialCircle{transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,border-color .22s}
+.login-redesign .socialCircle:active{transform:scale(.91)}
+.login-redesign .socialDivider span{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+@keyframes talqinSpin{to{transform:rotate(360deg)}}
+@keyframes talqinFieldIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes talqinFeedbackIn{from{opacity:0;transform:translateY(-5px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes talqinShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}50%{transform:translateX(3px)}75%{transform:translateX(-2px)}}
+@media(prefers-reduced-motion:reduce){.login-redesign *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
