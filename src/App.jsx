@@ -85,7 +85,7 @@ function Art({type}) {
 }
 function LandmarkFallback(){return <div className="bankIcon"><div className="roof"/><div className="columns"><i/><i/><i/><i/></div><div className="base"/></div>}
 export default function App(){
- const [screen,setScreen]=useState('splash'),[slide,setSlide]=useState(0),[role,setRole]=useState('Talaba'),[showPass,setShowPass]=useState(false),[room,setRoom]=useState(null),[muted,setMuted]=useState(true),[q,setQ]=useState(0),[answer,setAnswer]=useState(null),[score,setScore]=useState(0),[toast,setToast]=useState('')
+ const [screen,setScreen]=useState('splash'),[slide,setSlide]=useState(0),[role,setRole]=useState('Talaba'),[showPass,setShowPass]=useState(false),[loginId,setLoginId]=useState(''),[loginPassword,setLoginPassword]=useState(''),[room,setRoom]=useState(null),[muted,setMuted]=useState(true),[q,setQ]=useState(0),[answer,setAnswer]=useState(null),[score,setScore]=useState(0),[toast,setToast]=useState('')
  const notify=(s)=>{setToast(s);window.setTimeout(()=>setToast(''),2400)}
  const startQuiz=()=>{setQ(0);setAnswer(null);setScore(0);setScreen('quiz')}
  const pick=i=>{if(answer!==null)return;setAnswer(i);if(i===questions[q%questions.length].correct)setScore(v=>v+1)}
@@ -96,7 +96,30 @@ export default function App(){
  const bottom=()=> <nav className="bottom">{navItems.map(([key,Icon,label])=><button key={key} className={screen===key?'navOn':'navOff'} onClick={()=>nav(key)}><Icon size={20}/><span>{label}</span></button>)}</nav>
  if(screen==='splash')return <main className="splash"><div className="splashGlow"/><div className="splashBrand"><div className="splashLogoMark"><GraduationCap size={42} strokeWidth={2.2}/></div><b>TALQIN</b></div><p>Bilim · Muhokama · Zakovat</p><div className="splashDivider"><i/></div><div className="loader"/><small>Yuklanmoqda...</small></main>
  if(screen==='onboard')return <main className={`onboard onboard-slide-${slide+1}`}><div className="onboardTop"><Logo/><button className="skip" onClick={()=>{window.localStorage.setItem('talqin_intro_seen','1');setScreen('login')}}>O‘tkazib yuborish <ChevronRight size={14}/></button></div><div className="slideArt"><Art type={slides[slide].icon}/></div><div className="slideText"><h1>{slides[slide].title}</h1><p>{slides[slide].desc}</p></div><div className="dots">{slides.map((_,i)=><i key={i} className={i===slide?'dotOn':'dot'}/>)}</div><button className="primary" onClick={()=>{if(slide<2)setSlide(slide+1);else{window.localStorage.setItem('talqin_intro_seen','1');setScreen('login')}}}>{slide<2?'Davom etish':'Boshlash'} <ArrowRight size={18}/></button></main>
- if(screen==='login')return <main className="login"><button className="back" onClick={()=>setScreen('onboard')}><ArrowLeft/></button><Logo large/><h1>Tizimga kirish</h1><div className="roleSwitch"><button className={role==='Talaba'?'roleActive':''} onClick={()=>setRole('Talaba')}>Talaba</button><button className={role==='O‘qituvchi'?'roleActive':''} onClick={()=>setRole('O‘qituvchi')}>O‘qituvchi</button></div><label className="field"><UserRound size={18}/><input placeholder="Talaba ID (yoki telefon)"/></label><label className="field"><LockKeyhole size={18}/><input type={showPass?'text':'password'} placeholder="Parol"/><button onClick={()=>setShowPass(!showPass)}>{showPass?<EyeOff size={17}/>:<Eye size={17}/>}</button></label><button className="primary" onClick={()=>setScreen('home')}>Kirish <ArrowRight size={18}/></button><div className="or">Yoki kirish</div><div className="social"><button onClick={()=>notify('Google orqali kirish keyingi versiyada')}>G</button><button onClick={()=>notify('Telegram orqali kirish keyingi versiyada')}>➤</button></div><p className="register">Hisobingiz yo‘qmi? <button onClick={()=>notify('Ro‘yxatdan o‘tish keyingi bosqichda')}>Ro‘yxatdan o‘tish</button></p></main>
+ if(screen==='login')return <main className="login login-redesign">
+ <button className="back" onClick={()=>setScreen('onboard')}><ArrowLeft/></button>
+ <Logo large/>
+ <h1>Tizimga kirish</h1>
+ <div className="roleSwitch">
+  <button className={role==='Talaba'?'roleActive':''} onClick={()=>setRole('Talaba')}>Talaba</button>
+  <button className={role==='O‘qituvchi'?'roleActive':''} onClick={()=>setRole('O‘qituvchi')}>O‘qituvchi</button>
+ </div>
+ {role==='O‘qituvchi'?<>
+  <div className="teacherAccessNote"><span className="teacherNoteIcon"><LockKeyhole size={18}/></span><div><b>O‘qituvchi kabineti</b><p>Login va parol administrator tomonidan beriladi.</p></div></div>
+  <label className="field"><UserRound size={18}/><input value={loginId} onChange={e=>setLoginId(e.target.value)} placeholder="O‘qituvchi login"/></label>
+  <label className="field"><LockKeyhole size={18}/><input value={loginPassword} onChange={e=>setLoginPassword(e.target.value)} type={showPass?'text':'password'} placeholder="Parol"/><button type="button" onClick={()=>setShowPass(!showPass)}>{showPass?<EyeOff size={17}/>:<Eye size={17}/>}</button></label>
+  <button className="primary" onClick={()=>notify(loginId&&loginPassword?'O‘qituvchi loginini tekshirish uchun server autentifikatsiyasi kerak.':'Login va parolni kiriting.')}>O‘qituvchi sifatida kirish <ArrowRight size={18}/></button>
+  <p className="teacherAdminHint">Hisobni mustaqil ro‘yxatdan o‘tkazish mavjud emas. Administrator o‘qituvchi uchun alohida login va parol yaratadi.</p>
+ </>:<>
+  <div className="studentWelcome"><h2>Talabalar uchun</h2><p>O‘zingizga qulay usulda xavfsiz kirishni tanlang.</p></div>
+  <div className="studentAuthOptions">
+   <button className="authProvider googleProvider" onClick={()=>notify('Google OAuth ulanishi sozlangach, Gmail orqali kirish ishlaydi.')}><span className="providerMark googleMark">G</span><span><b>Google orqali</b><small>Gmail hisobingiz bilan</small></span><ChevronRight size={18}/></button>
+   <button className="authProvider telegramProvider" onClick={()=>notify('Telegram Login ulanishi sozlangach, Telegram orqali kirish ishlaydi.')}><span className="providerMark telegramMark">➤</span><span><b>Telegram orqali</b><small>Telegram hisobingiz bilan</small></span><ChevronRight size={18}/></button>
+   <button className="authProvider yandexProvider" onClick={()=>notify('Yandex OAuth ulanishi sozlangach, Yandex email orqali kirish ishlaydi.')}><span className="providerMark yandexMark">Я</span><span><b>Yandex orqali</b><small>Yandex email hisobingiz bilan</small></span><ChevronRight size={18}/></button>
+  </div>
+  <p className="studentAuthFoot">Parol yoki ID eslab qolish shart emas — tanlangan xizmat orqali tasdiqlang.</p>
+ </>}
+ </main>
  return <main className="app">
  <header className="header"><Logo/><button className="avatar" onClick={()=>nav('profile')}>ZA</button></header>
  {screen==='home'&&<section className="home"><div className="greeting"><div className="userMini">ZA</div><div><small>Assalomu alaykum,</small><h2>Zoxid! 👋</h2></div><button className="bell" onClick={()=>notify('Yangi bildirishnomalar yo‘q')}><Bell size={19}/><i/></button></div><div className="bankBanner"><div><b>Bank ishi</b><p>Yo‘nalish bo‘yicha<br/>darslar va muhokamalar</p></div><Art type="bank"/></div><div className="tiles"><button className="tileRed" onClick={()=>nav('lessons')}><Mic size={29}/><b>Jonli darslar</b><small>Live Class</small></button><button className="tilePurple" onClick={startQuiz}><Brain size={29}/><b>Zakovat</b><small>O‘yini</small></button><button className="tileBlue" onClick={()=>nav('materials')}><BookOpen size={29}/><b>Darslar</b><small>Materiallar</small></button><button className="tileOrange" onClick={()=>nav('community')}><Users size={29}/><b>Hamjamiyat</b><small>Talabalar</small></button></div><div className="sectionTitle"><h3>Jonli darslar</h3><button onClick={()=>nav('lessons')}>Barchasi <ChevronRight size={15}/></button></div>{rooms.slice(0,2).map(r=><button className="roomRow" key={r.title} onClick={()=>setRoom(r)}><span className="roomIcon"><Radio/></span><span className="roomDetails"><b>{r.title}</b><small>{r.host} · {r.count} tinglovchi</small></span><span className="liveBadge">● Live</span></button>)}</section>}
