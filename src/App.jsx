@@ -55,8 +55,32 @@ function BankStudyIllustration(){
   <circle cx="58" cy="83" r="13" fill="url(#bankGold)" stroke="#b87810" strokeWidth="2"/><path d="M58 76 V90 M52 83 H64" stroke="#fff3c7" strokeWidth="2.5" strokeLinecap="round"/>
  </svg>
 }
+function removeConnectedWhiteBackground(img){
+ if(img.dataset.bgRemoved==='1'||!img.naturalWidth)return;
+ img.dataset.bgRemoved='1';
+ try{
+  const max=720,scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));
+  const w=Math.max(1,Math.round(img.naturalWidth*scale)),h=Math.max(1,Math.round(img.naturalHeight*scale));
+  const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});if(!ctx)return;
+  ctx.drawImage(img,0,0,w,h);
+  const frame=ctx.getImageData(0,0,w,h),p=frame.data,n=w*h;
+  const seen=new Uint8Array(n),queue=new Uint32Array(n);let head=0,tail=0;
+  const isBg=i=>{const k=i*4,r=p[k],g=p[k+1],b=p[k+2];return r>242&&g>242&&b>242&&Math.max(r,g,b)-Math.min(r,g,b)<18};
+  const seed=i=>{if(!seen[i]&&isBg(i)){seen[i]=1;queue[tail++]=i}};
+  for(let x=0;x<w;x++){seed(x);seed((h-1)*w+x)}
+  for(let y=0;y<h;y++){seed(y*w);seed(y*w+w-1)}
+  while(head<tail){
+   const i=queue[head++],x=i%w,y=(i/w)|0,k=i*4;
+   p[k+3]=0;
+   if(x>0)seed(i-1);if(x<w-1)seed(i+1);if(y>0)seed(i-w);if(y<h-1)seed(i+w);
+  }
+  ctx.putImageData(frame,0,0);
+  img.src=canvas.toDataURL('image/png');
+ }catch(e){/* Keep original image if processing is unsupported */}
+}
 function Art({type}) {
-  const icon=type==='mic'?<AudioIllustration/>:type==='trophy'?<><img className="trophyIllustration" src="/talqin-trophy.png?v=2" alt="TALQIN Zakovat kubogi" onError={e=>{e.currentTarget.dataset.failed="true"}}/><Trophy className="trophyFallback" size={130} aria-hidden="true"/></>:type==='bank'?<LandmarkFallback/>:<img className="bankStudyImage" src="/bank-study-3d.png" alt="Bank ishi darslari: 3D bank binosi, ochiq kitob va tangalar" loading="eager" decoding="async"/>
+  const icon=type==='mic'?<AudioIllustration/>:type==='trophy'?<><img className="trophyIllustration" src="/talqin-trophy.png?v=2" alt="TALQIN Zakovat kubogi" onError={e=>{e.currentTarget.dataset.failed="true"}}/><Trophy className="trophyFallback" size={130} aria-hidden="true"/></>:type==='bank'?<LandmarkFallback/>:<img className="bankStudyImage" src="/bank-study-3d.png?v=3" alt="Bank ishi darslari: 3D bank binosi, ochiq kitob va tangalar" loading="eager" decoding="async" onLoad={e=>removeConnectedWhiteBackground(e.currentTarget)}/>
   return <div className={'art art-'+type}><div className="artHalo"/><div className="artIcon">{icon}</div><div className="artShadow"/></div>
 }
 function LandmarkFallback(){return <div className="bankIcon"><div className="roof"/><div className="columns"><i/><i/><i/><i/></div><div className="base"/></div>}
