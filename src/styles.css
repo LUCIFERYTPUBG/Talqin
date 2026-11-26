@@ -464,3 +464,12 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 .telegramMark{color:#fff;background:#229ed9;font-size:20px}
 .yandexMark{color:#fff;background:#e5322a;font-size:23px}
 .studentAuthFoot{margin-top:18px}
+
+/* Official brand marks for student sign-in */
+.brandSvg{display:block;width:30px;height:30px;flex:none}
+.googleMark{background:#fff!important;border:1px solid #e8eaf0!important;border-radius:50%!important}
+.googleSvg{width:25px;height:25px}
+.telegramMark{background:transparent!important;padding:0!important;border-radius:50%!important;overflow:hidden}
+.telegramSvg{width:42px;height:42px}
+.yandexMark{background:#fff!important;border:1px solid #f0e8e8!important;border-radius:50%!important}
+.yandexSvg{width:30px;height:30px}
