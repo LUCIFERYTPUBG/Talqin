@@ -108,6 +108,8 @@ export default function App(){
  <button className="back" onClick={()=>setScreen('onboard')}><ArrowLeft/></button>
  <Logo large/>
  <h1>{role==='O‘qituvchi'?'O‘qituvchi kabineti':authMode==='register'?'Ro‘yxatdan o‘tish':'Tizimga kirish'}</h1>
+ <p className="loginSubtitle">{role==='O‘qituvchi'?'O‘qituvchilar uchun xavfsiz kabinet':'Ta’lim, muloqot va bank ishi — bir platformada'}</p>
+ {role==='Talaba'&&<div className="loginHeroVisual" aria-hidden="true"><div className="loginHeroGlow"/><img src="/bank-study-3d.png?v=4" alt="" onLoad={e=>removeConnectedWhiteBackground(e.currentTarget)}/><span className="heroOrbit heroOrbitOne"/><span className="heroOrbit heroOrbitTwo"/><i className="heroSpark heroSparkOne"/><i className="heroSpark heroSparkTwo"/></div>}
  <div className="roleSwitch">
   <button className={role==='Talaba'?'roleActive':''} onClick={()=>{setRole('Talaba');setAuthMode('login')}}>Talaba</button>
   <button className={role==='O‘qituvchi'?'roleActive':''} onClick={()=>setRole('O‘qituvchi')}>O‘qituvchi</button>
