@@ -56,7 +56,7 @@ function BankStudyIllustration(){
  </svg>
 }
 function Art({type}) {
-  const icon=type==='mic'?<AudioIllustration/>:type==='trophy'?<><img className="trophyIllustration" src="/talqin-trophy.png?v=2" alt="TALQIN Zakovat kubogi" onError={e=>{e.currentTarget.dataset.failed="true"}}/><Trophy className="trophyFallback" size={130} aria-hidden="true"/></>:type==='bank'?<LandmarkFallback/>:<BankStudyIllustration/>
+  const icon=type==='mic'?<AudioIllustration/>:type==='trophy'?<><img className="trophyIllustration" src="/talqin-trophy.png?v=2" alt="TALQIN Zakovat kubogi" onError={e=>{e.currentTarget.dataset.failed="true"}}/><Trophy className="trophyFallback" size={130} aria-hidden="true"/></>:type==='bank'?<LandmarkFallback/>:<img className="bankStudyImage" src="/bank-study-3d.png" alt="Bank ishi darslari: 3D bank binosi, ochiq kitob va tangalar" loading="eager" decoding="async"/>
   return <div className={'art art-'+type}><div className="artHalo"/><div className="artIcon">{icon}</div><div className="artShadow"/></div>
 }
 function LandmarkFallback(){return <div className="bankIcon"><div className="roof"/><div className="columns"><i/><i/><i/><i/></div><div className="base"/></div>}
