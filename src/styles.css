@@ -586,3 +586,48 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 @keyframes talqinFeedbackIn{from{opacity:0;transform:translateY(-5px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes talqinShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}50%{transform:translateX(3px)}75%{transform:translateX(-2px)}}
 @media(prefers-reduced-motion:reduce){.login-redesign *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* TALQIN signature micro-animations — use a distinct symbol per action */
+.motionGlyph{display:inline-flex;align-items:center;justify-content:center;position:relative;flex:0 0 auto;vertical-align:middle;color:currentColor}
+.motionGlyphSvg{display:block;overflow:visible}
+.motionAudio{display:inline-flex;align-items:center;justify-content:center;gap:2px}
+.motionAudio i{display:block;width:3px;height:38%;border-radius:5px;background:currentColor;transform-origin:center;animation:talqinAudioBeat .85s ease-in-out infinite}
+.motionAudio i:nth-child(2){height:68%;animation-delay:.12s}
+.motionAudio i:nth-child(3){height:100%;animation-delay:.22s}
+.motionAudio i:nth-child(4){height:60%;animation-delay:.32s}
+.motionAudio i:nth-child(5){height:32%;animation-delay:.42s}
+.motion-cap .motionGlyphSvg{animation:talqinCapLift 2.1s ease-in-out infinite}
+.motion-book .motionGlyphSvg{transform-origin:50% 50%;animation:talqinBookOpen 2.4s ease-in-out infinite}
+.motion-trophy .motionGlyphSvg{animation:talqinTrophyPop 2s ease-in-out infinite}
+.motionAccent{position:absolute;right:-4%;top:-6%;color:#e8aa31;animation:talqinSparkTwinkle 1.7s ease-in-out infinite}
+.motion-shield .motionGlyphSvg{animation:talqinShieldPulse 1.8s ease-in-out infinite}
+.motion-check .motionGlyphSvg{animation:talqinCheckPop .42s cubic-bezier(.2,.9,.2,1.2) both}
+.motion-arrow .motionGlyphSvg{animation:talqinArrowNudge 1.4s ease-in-out infinite}
+.splashMotionIcon{color:#b5102d;margin:24px auto 10px;filter:drop-shadow(0 5px 12px #b5102d18)}
+.login-redesign .authSubmit .motionGlyph{color:inherit}
+.login-redesign .authSubmit .motionAudio{width:21px;height:21px}
+.login-redesign .authFeedback.error>svg{color:#b5102d;animation:talqinErrorMark .35s ease-out}
+.login-redesign .authFeedback.loading .motionGlyph{color:#b5102d}
+.login-redesign .authFeedback.info .motionGlyph{color:#1e9b68}
+.login-redesign .socialCircle .brandSvg{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.login-redesign .socialCircle:hover .brandSvg{transform:scale(1.09) rotate(-4deg)}
+.login-redesign .socialCircle:focus-visible{outline:3px solid #b5102d2b;outline-offset:3px}
+.login-redesign .teacherNoteIcon .motionGlyphSvg{animation:talqinShieldPulse 2s ease-in-out infinite}
+.art-audio .artIcon{animation:talqinAudioFloat 3s ease-in-out infinite}
+.art-trophy .artIcon{animation:talqinTrophyPop 2.6s ease-in-out infinite}
+.art-bank .bankStudyBuilding{transform-origin:150px 85px;animation:talqinBankRise 3.2s ease-in-out infinite}
+.art-books .bankStudyBook{transform-origin:150px 180px;animation:talqinBookOpen 3s ease-in-out infinite}
+.tileRed>svg,.tilePurple>svg,.tileBlue>svg,.tileOrange>svg{transition:transform .25s}
+.tileRed:active>svg,.tilePurple:active>svg,.tileBlue:active>svg,.tileOrange:active>svg{transform:translateY(-3px) scale(1.08)}
+@keyframes talqinAudioBeat{0%,100%{transform:scaleY(.42);opacity:.7}50%{transform:scaleY(1);opacity:1}}
+@keyframes talqinCapLift{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2px) rotate(-3deg)}}
+@keyframes talqinBookOpen{0%,100%{transform:perspective(100px) rotateY(0)}50%{transform:perspective(100px) rotateY(-8deg)}}
+@keyframes talqinTrophyPop{0%,100%{transform:translateY(0) scale(1)}45%{transform:translateY(-3px) scale(1.04)}}
+@keyframes talqinSparkTwinkle{0%,100%{opacity:.45;transform:scale(.75) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(18deg)}}
+@keyframes talqinShieldPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.06);opacity:.82}}
+@keyframes talqinCheckPop{0%{transform:scale(.45) rotate(-12deg);opacity:0}75%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+@keyframes talqinArrowNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+@keyframes talqinErrorMark{0%{transform:rotate(-25deg) scale(.7)}70%{transform:rotate(8deg) scale(1.1)}100%{transform:rotate(0) scale(1)}}
+@keyframes talqinAudioFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes talqinBankRise{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce){.motionGlyph,.motionGlyph *,.art-audio .artIcon,.art-trophy .artIcon,.art-bank .bankStudyBuilding,.art-books .bankStudyBook{animation:none!important}}
