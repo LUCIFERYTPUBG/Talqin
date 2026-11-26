@@ -473,3 +473,19 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 .telegramSvg{width:42px;height:42px}
 .yandexMark{background:#fff!important;border:1px solid #f0e8e8!important;border-radius:50%!important}
 .yandexSvg{width:30px;height:30px}
+
+/* Student authentication mode and circular provider buttons */
+.authModeSwitch{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px;border-radius:16px;background:#eceaf0;margin:4px 0 18px}
+.authModeSwitch button{height:42px;border-radius:12px;font-size:12px;font-weight:800;color:#77717b}
+.authModeSwitch .authModeActive{background:#fff;color:#a90d24;box-shadow:0 2px 8px #21121a0d}
+.socialDivider{display:flex;align-items:center;gap:12px;margin:22px 0 16px;color:#9a929a;font-size:11px}
+.socialDivider:before,.socialDivider:after{content:"";height:1px;flex:1;background:#e9e5eb}
+.socialCircleRow{display:flex;justify-content:center;align-items:center;gap:18px}
+.socialCircle{width:58px;height:58px;display:grid;place-items:center;border-radius:50%;background:#fff;border:1px solid #e8e4ea;box-shadow:0 5px 16px #29131a08;padding:0;transition:transform .18s,box-shadow .18s}
+.socialCircle:active{transform:scale(.94)}
+.socialCircle .brandSvg{width:30px;height:30px;display:block}
+.googleCircle{background:#fff}
+.telegramCircle{background:#fff}
+.yandexCircle{background:#fff}
+.authBottomText{margin:24px 0 0;text-align:center;color:#8b828b;font-size:11px}
+.authBottomText button{color:#a90d24;font-weight:900;font-size:11px;background:none;border:0;padding:0 0 0 4px}
