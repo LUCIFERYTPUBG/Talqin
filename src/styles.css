@@ -433,4 +433,5 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
   position:relative;
   z-index:1;
   filter:drop-shadow(0 9px 11px #a90d2018);
+  mix-blend-mode:multiply;
 }
