@@ -435,3 +435,32 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
   filter:drop-shadow(0 9px 11px #a90d2018);
   mix-blend-mode:normal;
 }
+
+
+/* TALQIN sign-in: student social providers vs administrator-issued teacher credentials */
+.login-redesign{padding:22px 24px 30px;max-width:480px;margin:0 auto}
+.login-redesign .roleSwitch{margin:24px 0 22px;border-radius:999px;padding:5px;background:#eceaf0}
+.login-redesign .roleSwitch button{height:44px;border-radius:999px;font-size:13px}
+.login-redesign .roleSwitch .roleActive{background:linear-gradient(115deg,#c8102e,#a90d24);box-shadow:0 4px 12px #b70f2228}
+.teacherAccessNote{display:flex;align-items:center;gap:12px;padding:15px 14px;margin-bottom:18px;border:1px solid #f0dce1;background:#fff7f9;border-radius:17px}
+.teacherNoteIcon{width:40px;height:40px;display:grid;place-items:center;flex-shrink:0;border-radius:13px;background:#f8e2e7;color:#a90d24}
+.teacherAccessNote b{font-size:13px;font-weight:900;color:#301a20}
+.teacherAccessNote p{font-size:11px;line-height:1.45;color:#82747b;margin:4px 0 0}
+.login-redesign .field{height:56px;border-radius:16px;margin-bottom:13px}
+.login-redesign .field input{font-size:13px}
+.login-redesign .primary{min-height:54px;height:auto;border-radius:18px;font-size:14px;gap:10px}
+.teacherAdminHint,.studentAuthFoot{font-size:11px;line-height:1.6;color:#8b8189;text-align:center;margin:16px 8px 0}
+.studentWelcome{text-align:center;margin:8px 0 21px}
+.studentWelcome h2{font-size:19px;font-weight:900;letter-spacing:-.4px;margin:0 0 7px}
+.studentWelcome p{font-size:12px;line-height:1.5;color:#827a83;margin:0}
+.studentAuthOptions{display:flex;flex-direction:column;gap:12px}
+.authProvider{display:flex;align-items:center;gap:13px;width:100%;min-height:70px;padding:12px 14px;background:#fff;border:1px solid #ebe7ed;border-radius:18px;text-align:left;color:#24191f;box-shadow:0 3px 12px #26141a05}
+.authProvider>span:nth-child(2){display:flex;flex-direction:column;gap:4px;flex:1}
+.authProvider b{font-size:13px;font-weight:900}
+.authProvider small{font-size:11px;color:#89818a}
+.authProvider>svg{color:#a99fa7}
+.providerMark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:22px;flex-shrink:0}
+.googleMark{color:#4285f4;background:#f5f8ff;border:1px solid #e8efff}
+.telegramMark{color:#fff;background:#229ed9;font-size:20px}
+.yandexMark{color:#fff;background:#e5322a;font-size:23px}
+.studentAuthFoot{margin-top:18px}
