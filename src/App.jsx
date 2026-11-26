@@ -18,6 +18,12 @@ const questions = [
  {q:'Depozit nima?',a:['Bankka qo‘yilgan omonat','Kredit turi','To‘lov terminali','Valyuta kursi'],correct:0},
  {q:'Kredit foizi nimani bildiradi?',a:['Qarzning narxi','Bank manzili','Hisob raqami','Naqd pul turi'],correct:0}
 ]
+function MotionIcon({type='sparkle',size=22,className=''}) {
+ const common={size,strokeWidth:2.2,className:'motionGlyphSvg'};
+ if(type==='audio')return <span className={'motionGlyph motionAudio '+className} style={{width:size,height:size}} aria-hidden="true">{[0,1,2,3,4].map(i=><i key={i}/>)}</span>;
+ const Icon=type==='book'?BookOpen:type==='cap'?GraduationCap:type==='trophy'?Trophy:type==='shield'?ShieldCheck:type==='check'?Check:type==='arrow'?ArrowRight:type==='mic'?Mic:Sparkles;
+ return <span className={'motionGlyph motion-'+type+' '+className} style={{width:size,height:size}} aria-hidden="true"><Icon {...common}/>{type==='trophy'&&<Sparkles className="motionAccent" size={Math.max(8,size*.42)}/>}</span>
+}
 function Logo({large=false}) { return <div className={large?'brand brandLarge':'brand'}><GraduationCap/><b>TALQIN</b></div> }
 function AudioIllustration() {
   return <img
@@ -85,7 +91,7 @@ function Art({type}) {
 }
 function LandmarkFallback(){return <div className="bankIcon"><div className="roof"/><div className="columns"><i/><i/><i/><i/></div><div className="base"/></div>}
 export default function App(){
- const [screen,setScreen]=useState('splash'),[slide,setSlide]=useState(0),[role,setRole]=useState('Talaba'),[showPass,setShowPass]=useState(false),[loginId,setLoginId]=useState(''),[loginPassword,setLoginPassword]=useState(''),[authMode,setAuthMode]=useState('login'),[studentName,setStudentName]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[room,setRoom]=useState(null),[muted,setMuted]=useState(true),[q,setQ]=useState(0),[answer,setAnswer]=useState(null),[score,setScore]=useState(0),[toast,setToast]=useState('')
+ const [screen,setScreen]=useState('splash'),[slide,setSlide]=useState(0),[role,setRole]=useState('Talaba'),[showPass,setShowPass]=useState(false),[loginId,setLoginId]=useState(''),[loginPassword,setLoginPassword]=useState(''),[authMode,setAuthMode]=useState('login'),[studentName,setStudentName]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[room,setRoom]=useState(null),[muted,setMuted]=useState(true),[q,setQ]=useState(0),[answer,setAnswer]=useState(null),[score,setScore]=useState(0),[toast,setToast]=useState(''),[rememberMe,setRememberMe]=useState(true),[authFeedback,setAuthFeedback]=useState(null),[authBusy,setAuthBusy]=useState(false)
  const notify=(s)=>{setToast(s);window.setTimeout(()=>setToast(''),2400)}
  const runAuth=()=>{setAuthFeedback(null);if(!loginId.trim()||!loginPassword){setAuthFeedback({type:'error',text:'Login yoki email va parolni kiriting.'});return}if(role==='Talaba'&&authMode==='register'&&(!studentName.trim()||confirmPassword!==loginPassword)){setAuthFeedback({type:'error',text:'Ism-familiyani kiriting va parollar mosligini tekshiring.'});return}setAuthBusy(true);setAuthFeedback({type:'loading',text:authMode==='register'?'Hisob ma’lumotlari tekshirilmoqda…':'Kirish ma’lumotlari tekshirilmoqda…'});window.setTimeout(()=>{setAuthBusy(false);setAuthFeedback({type:'info',text:'Kirish serveri hali ulanmagan. Backend autentifikatsiyasi ulangach, hisobingiz tekshiriladi.'})},950)}
  const socialAuth=provider=>{setAuthFeedback({type:'loading',text:provider+' orqali xavfsiz ulanish ochilmoqda…'});window.setTimeout(()=>setAuthFeedback({type:'info',text:provider+' bilan kirish uchun OAuth / bot sozlamalari serverga ulanishi kerak.'}),650)}
@@ -96,7 +102,7 @@ export default function App(){
  const navItems=[['home',Home,'Bosh sahifa'],['lessons',BookOpen,'Darslar'],['quiz',Brain,'Zakovat'],['profile',UserRound,'Profil']]
  React.useEffect(()=>{if(screen==='splash'){const seen=window.localStorage.getItem('talqin_intro_seen')==='1';const t=window.setTimeout(()=>setScreen(seen?'login':'onboard'),350);return()=>window.clearTimeout(t)}},[screen])
  const bottom=()=> <nav className="bottom">{navItems.map(([key,Icon,label])=><button key={key} className={screen===key?'navOn':'navOff'} onClick={()=>nav(key)}><Icon size={20}/><span>{label}</span></button>)}</nav>
- if(screen==='splash')return <main className="splash"><div className="splashGlow"/><div className="splashBrand"><div className="splashLogoMark"><GraduationCap size={42} strokeWidth={2.2}/></div><b>TALQIN</b></div><p>Bilim · Muhokama · Zakovat</p><div className="splashDivider"><i/></div><div className="loader"/><small>Yuklanmoqda...</small></main>
+ if(screen==='splash')return <main className="splash"><div className="splashGlow"/><div className="splashBrand"><div className="splashLogoMark"><GraduationCap size={42} strokeWidth={2.2}/></div><b>TALQIN</b></div><p>Bilim · Muhokama · Zakovat</p><div className="splashDivider"><i/></div><MotionIcon type="audio" size={34} className="splashMotionIcon"/><small>Yuklanmoqda...</small></main>
  if(screen==='onboard')return <main className={`onboard onboard-slide-${slide+1}`}><div className="onboardTop"><Logo/><button className="skip" onClick={()=>{window.localStorage.setItem('talqin_intro_seen','1');setScreen('login')}}>O‘tkazib yuborish <ChevronRight size={14}/></button></div><div className="slideArt"><Art type={slides[slide].icon}/></div><div className="slideText"><h1>{slides[slide].title}</h1><p>{slides[slide].desc}</p></div><div className="dots">{slides.map((_,i)=><i key={i} className={i===slide?'dotOn':'dot'}/>)}</div><button className="primary" onClick={()=>{if(slide<2)setSlide(slide+1);else{window.localStorage.setItem('talqin_intro_seen','1');setScreen('login')}}}>{slide<2?'Davom etish':'Boshlash'} <ArrowRight size={18}/></button></main>
  if(screen==='login')return <main className="login login-redesign">
  <button className="back" onClick={()=>setScreen('onboard')}><ArrowLeft/></button>
@@ -111,8 +117,8 @@ export default function App(){
   <label className="field"><UserRound size={18}/><input value={loginId} onChange={e=>setLoginId(e.target.value)} placeholder="Login"/></label>
   <label className="field"><LockKeyhole size={18}/><input value={loginPassword} onChange={e=>setLoginPassword(e.target.value)} type={showPass?'text':'password'} placeholder="Parol"/><button type="button" onClick={()=>setShowPass(!showPass)}>{showPass?<EyeOff size={17}/>:<Eye size={17}/>}</button></label>
   <div className="authOptions"><label className="rememberOption"><input type="checkbox" checked={rememberMe} onChange={e=>setRememberMe(e.target.checked)}/><span className="customCheck"><Check size={12}/></span><span>Meni eslab qolish</span></label><span className="secureCaption"><ShieldCheck size={14}/> Himoyalangan kirish</span></div>
-  <button className={`primary authSubmit ${authBusy?'isLoading':''}`} disabled={authBusy} onClick={runAuth}>{authBusy?<><span className="authSpinner"/>Tekshirilmoqda…</>:<>Kirish <ArrowRight size={18}/></>}</button>
-  {authFeedback&&<div className={`authFeedback ${authFeedback.type}`} key={authFeedback.text}>{authFeedback.type==='error'?<X size={16}/>:authFeedback.type==='loading'?<span className="miniSpinner"/>:<ShieldCheck size={16}/>}<span>{authFeedback.text}</span></div>}
+  <button className={`primary authSubmit ${authBusy?'isLoading':''}`} disabled={authBusy} onClick={runAuth}>{authBusy?<><MotionIcon type={role==='O‘qituvchi'?'shield':'audio'} size={21}/>Tekshirilmoqda…</>:<><MotionIcon type="cap" size={21}/>Kirish <MotionIcon type="arrow" size={18}/></>}</button>
+  {authFeedback&&<div className={`authFeedback ${authFeedback.type}`} key={authFeedback.text}>{authFeedback.type==='error'?<X size={16}/>:authFeedback.type==='loading'?<MotionIcon type="audio" size={18}/>:<MotionIcon type="check" size={18}/>}<span>{authFeedback.text}</span></div>}
   <p className="teacherAdminHint"><ShieldCheck size={14}/> O‘qituvchi hisobini administrator yaratadi va login-parolni beradi.</p>
  </>:<>
   <div className="authModeSwitch">
@@ -124,7 +130,7 @@ export default function App(){
   <label className="field"><LockKeyhole size={18}/><input value={loginPassword} onChange={e=>setLoginPassword(e.target.value)} type={showPass?'text':'password'} placeholder="Parol"/><button type="button" onClick={()=>setShowPass(!showPass)}>{showPass?<EyeOff size={17}/>:<Eye size={17}/>}</button></label>
   {authMode==='register'&&<label className="field"><LockKeyhole size={18}/><input value={confirmPassword} onChange={e=>setConfirmPassword(e.target.value)} type="password" placeholder="Parolni tasdiqlang"/></label>}
   {authMode==='login'&&<div className="authOptions"><label className="rememberOption"><input type="checkbox" checked={rememberMe} onChange={e=>setRememberMe(e.target.checked)}/><span className="customCheck"><Check size={12}/></span><span>Meni eslab qolish</span></label><button className="forgotLink" onClick={()=>setAuthFeedback({type:'info',text:'Parolni tiklash uchun email orqali tiklash xizmati backendga ulanishi kerak.'})}>Parolni unutdingizmi?</button></div>}
-  <button className={`primary authSubmit ${authBusy?'isLoading':''}`} disabled={authBusy} onClick={runAuth}>{authBusy?<><span className="authSpinner"/>Tekshirilmoqda…</>:<>{authMode==='register'?'Hisob yaratish':'Kirish'} <ArrowRight size={18}/></>}</button>
+  <button className={`primary authSubmit ${authBusy?'isLoading':''}`} disabled={authBusy} onClick={runAuth}>{authBusy?<><MotionIcon type="audio" size={21}/>Tekshirilmoqda…</>:<><MotionIcon type={authMode==='register'?'check':'cap'} size={21}/>{authMode==='register'?'Hisob yaratish':'Kirish'} <MotionIcon type="arrow" size={18}/></>}</button>
   {authFeedback&&<div className={`authFeedback ${authFeedback.type}`} key={authFeedback.text}>{authFeedback.type==='error'?<X size={16}/>:authFeedback.type==='loading'?<span className="miniSpinner"/>:<ShieldCheck size={16}/>}<span>{authFeedback.text}</span></div>}
   <div className="socialDivider"><span><Sparkles size={13}/> {authMode==='register'?'Tez ro‘yxatdan o‘tish':'Yoki tez kirish'}</span></div>
   <div className="socialCircleRow">
