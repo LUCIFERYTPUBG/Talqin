@@ -489,3 +489,60 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 .yandexCircle{background:#fff}
 .authBottomText{margin:24px 0 0;text-align:center;color:#8b828b;font-size:11px}
 .authBottomText button{color:#a90d24;font-weight:900;font-size:11px;background:none;border:0;padding:0 0 0 4px}
+
+/* TALQIN premium sign-in visual refresh */
+.login-redesign{
+ position:relative;isolation:isolate;min-height:100svh;padding:24px 22px 34px;
+ max-width:500px;margin:0 auto;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 16%,rgba(194,18,48,.095),transparent 34%),radial-gradient(ellipse at 100% 75%,rgba(225,38,67,.07),transparent 28%),#f8f7fa;
+}
+.login-redesign:before{
+ content:"";position:absolute;z-index:-1;top:-105px;left:50%;transform:translateX(-50%);
+ width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,#e51c3d1c 0%,#e51c3d08 48%,transparent 72%);pointer-events:none;
+}
+.login-redesign .back{width:42px;height:42px;border-radius:15px;background:#ffffffc9;border:1px solid #eee8ee;box-shadow:0 4px 16px #29131a08;color:#5a3440}
+.login-redesign> .brand{margin:16px auto 20px;filter:drop-shadow(0 5px 10px #a90d2410)}
+.login-redesign h1{
+ font-size:27px;letter-spacing:-.9px;text-align:center;line-height:1.18;margin:0 0 7px;color:#21171e;
+}
+.login-redesign h1:after{content:"";display:block;width:34px;height:3px;border-radius:4px;background:linear-gradient(90deg,#e31c3b,#a50d25);margin:13px auto 0}
+.login-redesign .roleSwitch{
+ margin:23px 0 20px;padding:5px;border-radius:18px;background:#eae7ee;
+ box-shadow:inset 0 1px 3px #21121a0c;
+}
+.login-redesign .roleSwitch button{height:46px;border-radius:14px;color:#746b75;font-size:13px;transition:background .2s,color .2s,box-shadow .2s}
+.login-redesign .roleSwitch .roleActive{
+ background:linear-gradient(120deg,#d91838,#a70b25);color:#fff;
+ box-shadow:0 6px 14px #b70f2233,inset 0 1px 0 #ffffff40;
+}
+.login-redesign .authModeSwitch{
+ margin:0 0 18px;padding:5px;border-radius:16px;background:#eeeaf0;border:1px solid #e9e3eb;
+}
+.login-redesign .authModeSwitch button{height:41px;border-radius:12px;font-size:12px;transition:all .2s}
+.login-redesign .authModeSwitch .authModeActive{background:#fff;color:#a90d24;box-shadow:0 4px 12px #25121a10}
+.login-redesign .field{
+ height:60px;margin-bottom:13px;padding:0 17px;gap:12px;border-radius:17px;
+ border:1px solid #e8e3ea;background:#ffffffd9;color:#9b8f9a;
+ box-shadow:0 5px 16px #24121a05;transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.login-redesign .field:focus-within{border-color:#c21a35;background:#fff;box-shadow:0 0 0 4px #c21a3510,0 8px 20px #24121a08}
+.login-redesign .field input{font-size:14px;color:#2c2028;font-weight:600}
+.login-redesign .field input::placeholder{color:#a39aa3;font-weight:500}
+.login-redesign .primary{
+ min-height:58px;margin-top:4px;border-radius:18px;font-size:15px;letter-spacing:.15px;
+ box-shadow:0 10px 22px #b70f2229,inset 0 1px 0 #ffffff55;
+}
+.login-redesign .socialDivider{margin:23px 0 18px;font-size:11px;color:#9b929b}
+.login-redesign .socialCircleRow{gap:20px}
+.login-redesign .socialCircle{
+ width:60px;height:60px;border:1px solid #ebe6ed;background:#fff;
+ box-shadow:0 7px 18px #2b111a0b, inset 0 1px 0 #fff;position:relative;
+}
+.login-redesign .socialCircle:before{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid #b9163210;pointer-events:none}
+.login-redesign .socialCircle:hover{transform:translateY(-3px);box-shadow:0 10px 22px #2b111a14}
+.login-redesign .socialCircle .brandSvg{width:29px;height:29px}
+.login-redesign .authBottomText{margin:26px 0 0;font-size:12px}
+.login-redesign .authBottomText button{font-size:12px}
+.login-redesign .teacherAccessNote{border-radius:18px;background:#fff;border-color:#eee2e7;box-shadow:0 6px 18px #29131a05}
+.login-redesign .teacherAdminHint{padding:0 16px}
+@media(max-height:760px){.login-redesign{padding-top:16px}.login-redesign> .brand{margin:10px auto 14px}.login-redesign .roleSwitch{margin:17px 0}.login-redesign .socialDivider{margin:16px 0 12px}.login-redesign .authBottomText{margin-top:18px}}
