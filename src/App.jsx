@@ -85,7 +85,7 @@ function Art({type}) {
 }
 function LandmarkFallback(){return <div className="bankIcon"><div className="roof"/><div className="columns"><i/><i/><i/><i/></div><div className="base"/></div>}
 export default function App(){
- const [screen,setScreen]=useState('splash'),[slide,setSlide]=useState(0),[role,setRole]=useState('Talaba'),[showPass,setShowPass]=useState(false),[loginId,setLoginId]=useState(''),[loginPassword,setLoginPassword]=useState(''),[room,setRoom]=useState(null),[muted,setMuted]=useState(true),[q,setQ]=useState(0),[answer,setAnswer]=useState(null),[score,setScore]=useState(0),[toast,setToast]=useState('')
+ const [screen,setScreen]=useState('splash'),[slide,setSlide]=useState(0),[role,setRole]=useState('Talaba'),[showPass,setShowPass]=useState(false),[loginId,setLoginId]=useState(''),[loginPassword,setLoginPassword]=useState(''),[authMode,setAuthMode]=useState('login'),[studentName,setStudentName]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[room,setRoom]=useState(null),[muted,setMuted]=useState(true),[q,setQ]=useState(0),[answer,setAnswer]=useState(null),[score,setScore]=useState(0),[toast,setToast]=useState('')
  const notify=(s)=>{setToast(s);window.setTimeout(()=>setToast(''),2400)}
  const startQuiz=()=>{setQ(0);setAnswer(null);setScore(0);setScreen('quiz')}
  const pick=i=>{if(answer!==null)return;setAnswer(i);if(i===questions[q%questions.length].correct)setScore(v=>v+1)}
@@ -99,25 +99,34 @@ export default function App(){
  if(screen==='login')return <main className="login login-redesign">
  <button className="back" onClick={()=>setScreen('onboard')}><ArrowLeft/></button>
  <Logo large/>
- <h1>Tizimga kirish</h1>
+ <h1>{role==='O‘qituvchi'?'O‘qituvchi kabineti':authMode==='register'?'Ro‘yxatdan o‘tish':'Tizimga kirish'}</h1>
  <div className="roleSwitch">
-  <button className={role==='Talaba'?'roleActive':''} onClick={()=>setRole('Talaba')}>Talaba</button>
+  <button className={role==='Talaba'?'roleActive':''} onClick={()=>{setRole('Talaba');setAuthMode('login')}}>Talaba</button>
   <button className={role==='O‘qituvchi'?'roleActive':''} onClick={()=>setRole('O‘qituvchi')}>O‘qituvchi</button>
  </div>
  {role==='O‘qituvchi'?<>
   <div className="teacherAccessNote"><span className="teacherNoteIcon"><LockKeyhole size={18}/></span><div><b>O‘qituvchi kabineti</b><p>Login va parol administrator tomonidan beriladi.</p></div></div>
-  <label className="field"><UserRound size={18}/><input value={loginId} onChange={e=>setLoginId(e.target.value)} placeholder="O‘qituvchi login"/></label>
+  <label className="field"><UserRound size={18}/><input value={loginId} onChange={e=>setLoginId(e.target.value)} placeholder="Login"/></label>
   <label className="field"><LockKeyhole size={18}/><input value={loginPassword} onChange={e=>setLoginPassword(e.target.value)} type={showPass?'text':'password'} placeholder="Parol"/><button type="button" onClick={()=>setShowPass(!showPass)}>{showPass?<EyeOff size={17}/>:<Eye size={17}/>}</button></label>
-  <button className="primary" onClick={()=>notify(loginId&&loginPassword?'O‘qituvchi loginini tekshirish uchun server autentifikatsiyasi kerak.':'Login va parolni kiriting.')}>O‘qituvchi sifatida kirish <ArrowRight size={18}/></button>
-  <p className="teacherAdminHint">Hisobni mustaqil ro‘yxatdan o‘tkazish mavjud emas. Administrator o‘qituvchi uchun alohida login va parol yaratadi.</p>
+  <button className="primary" onClick={()=>notify(loginId&&loginPassword?'O‘qituvchi hisobi server orqali tekshirilishi kerak.':'Login va parolni kiriting.')}>Kirish <ArrowRight size={18}/></button>
+  <p className="teacherAdminHint">O‘qituvchi hisobini administrator yaratadi va login-parolni beradi.</p>
  </>:<>
-  <div className="studentWelcome"><h2>Talabalar uchun</h2><p>O‘zingizga qulay usulda xavfsiz kirishni tanlang.</p></div>
-  <div className="studentAuthOptions">
-   <button className="authProvider googleProvider" onClick={()=>notify('Google OAuth ulanishi sozlangach, Gmail orqali kirish ishlaydi.')}><span className="providerMark googleMark"><svg className="brandSvg googleSvg" viewBox="0 0 48 48" aria-label="Google logo"><path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.9 6.1-15Z"/><path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 1.9-6.9 1.9-5.3 0-9.8-3.6-11.4-8.5H3.8v5.3A20 20 0 0 0 24 44Z"/><path fill="#FBBC05" d="M12.6 27.4a12 12 0 0 1 0-6.8v-5.3H3.8a20 20 0 0 0 0 17.4l8.8-5.3Z"/><path fill="#EA4335" d="M24 8.1c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 2.1 29.5 0 24 0A20 20 0 0 0 3.8 15.3l8.8 5.3C14.2 11.7 18.7 8.1 24 8.1Z"/></svg></span><span><b>Google orqali</b><small>Gmail hisobingiz bilan</small></span><ChevronRight size={18}/></button>
-   <button className="authProvider telegramProvider" onClick={()=>notify('Telegram Login ulanishi sozlangach, Telegram orqali kirish ishlaydi.')}><span className="providerMark telegramMark"><svg className="brandSvg telegramSvg" viewBox="0 0 48 48" aria-label="Telegram logo"><circle cx="24" cy="24" r="24" fill="#229ED9"/><path fill="#fff" d="M10.3 23.2 36.1 13.3c1.2-.4 2.2.3 1.8 2L33.5 37c-.3 1.3-1.1 1.6-2.2 1L23 31.2l-4.5 4.3c-.5.5-1 .5-1.1-.2l.7-8.1 15.2-12.1c.7-.5.1-.8-.7-.3L13.8 25.2l-3.2-1c-1.4-.5-1.4-1.1-.3-1Z"/></svg></span><span><b>Telegram orqali</b><small>Telegram hisobingiz bilan</small></span><ChevronRight size={18}/></button>
-   <button className="authProvider yandexProvider" onClick={()=>notify('Yandex OAuth ulanishi sozlangach, Yandex email orqali kirish ishlaydi.')}><span className="providerMark yandexMark"><svg className="brandSvg yandexSvg" viewBox="0 0 48 48" aria-label="Yandex logo"><rect width="48" height="48" rx="14" fill="#fff"/><path fill="#FC3F1D" d="M28.6 9H23c-7.1 0-11.5 4.2-11.5 10.8 0 5.3 2.7 8.7 7.3 10.4L9 39h8.1l10.2-14.4h.8V39h7V9h-6.5Zm-.5 9.5v9.2h-1.7c-5.3 0-7.8-2.4-7.8-7.7 0-4.8 2.5-7.3 7.5-7.3h2Z"/></svg></span><span><b>Yandex orqali</b><small>Yandex email hisobingiz bilan</small></span><ChevronRight size={18}/></button>
+  <div className="authModeSwitch">
+   <button className={authMode==='login'?'authModeActive':''} onClick={()=>setAuthMode('login')}>Kirish</button>
+   <button className={authMode==='register'?'authModeActive':''} onClick={()=>setAuthMode('register')}>Ro‘yxatdan o‘tish</button>
   </div>
-  <p className="studentAuthFoot">Parol yoki ID eslab qolish shart emas — tanlangan xizmat orqali tasdiqlang.</p>
+  {authMode==='register'&&<label className="field"><UserRound size={18}/><input value={studentName} onChange={e=>setStudentName(e.target.value)} placeholder="Ism va familiya"/></label>}
+  <label className="field"><UserRound size={18}/><input value={loginId} onChange={e=>setLoginId(e.target.value)} placeholder={authMode==='register'?'Email yoki talaba ID':'Login yoki email'}/></label>
+  <label className="field"><LockKeyhole size={18}/><input value={loginPassword} onChange={e=>setLoginPassword(e.target.value)} type={showPass?'text':'password'} placeholder="Parol"/><button type="button" onClick={()=>setShowPass(!showPass)}>{showPass?<EyeOff size={17}/>:<Eye size={17}/>}</button></label>
+  {authMode==='register'&&<label className="field"><LockKeyhole size={18}/><input value={confirmPassword} onChange={e=>setConfirmPassword(e.target.value)} type="password" placeholder="Parolni tasdiqlang"/></label>}
+  <button className="primary" onClick={()=>notify(!loginId||!loginPassword?'Login/email va parolni kiriting.':authMode==='register'&&(!studentName||confirmPassword!==loginPassword)?'Ismni kiriting va parollarni bir xil yozing.':'Hisobni yaratish/kirish uchun backend autentifikatsiyasi ulanishi kerak.')}>{authMode==='register'?'Hisob yaratish':'Kirish'} <ArrowRight size={18}/></button>
+  <div className="socialDivider"><span>Yoki {authMode==='register'?'ro‘yxatdan o‘ting':'kirish'}</span></div>
+  <div className="socialCircleRow">
+   <button className="socialCircle googleCircle" aria-label="Google orqali" onClick={()=>notify('Google Gmail hisoblarini tanlash oynasi OAuth sozlamalari ulangach ochiladi.')}><svg className="brandSvg" viewBox="0 0 48 48" aria-label="Google"><path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.9 6.1-15Z"/><path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 1.9-6.9 1.9-5.3 0-9.8-3.6-11.4-8.5H3.8v5.3A20 20 0 0 0 24 44Z"/><path fill="#FBBC05" d="M12.6 27.4a12 12 0 0 1 0-6.8v-5.3H3.8a20 20 0 0 0 0 17.4l8.8-5.3Z"/><path fill="#EA4335" d="M24 8.1c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 2.1 29.5 0 24 0A20 20 0 0 0 3.8 15.3l8.8 5.3C14.2 11.7 18.7 8.1 24 8.1Z"/></svg></button>
+   <button className="socialCircle telegramCircle" aria-label="Telegram orqali" onClick={()=>notify('Telegram orqali tasdiqlash Telegram bot va Login Widget sozlangach ishlaydi.')}><svg className="brandSvg" viewBox="0 0 48 48" aria-label="Telegram"><circle cx="24" cy="24" r="24" fill="#229ED9"/><path fill="#fff" d="M10.3 23.2 36.1 13.3c1.2-.4 2.2.3 1.8 2L33.5 37c-.3 1.3-1.1 1.6-2.2 1L23 31.2l-4.5 4.3c-.5.5-1 .5-1.1-.2l.7-8.1 15.2-12.1c.7-.5.1-.8-.7-.3L13.8 25.2l-3.2-1c-1.4-.5-1.4-1.1-.3-1Z"/></svg></button>
+   <button className="socialCircle yandexCircle" aria-label="Yandex orqali" onClick={()=>notify('Yandex email tanlash oynasi Yandex OAuth sozlamalari ulangach ochiladi.')}><svg className="brandSvg" viewBox="0 0 48 48" aria-label="Yandex"><path fill="#FC3F1D" d="M28.6 9H23c-7.1 0-11.5 4.2-11.5 10.8 0 5.3 2.7 8.7 7.3 10.4L9 39h8.1l10.2-14.4h.8V39h7V9h-6.5Zm-.5 9.5v9.2h-1.7c-5.3 0-7.8-2.4-7.8-7.7 0-4.8 2.5-7.3 7.5-7.3h2Z"/></svg></button>
+  </div>
+  <p className="authBottomText">{authMode==='register'?'Hisobingiz bormi?':'Hisobingiz yo‘qmi?'} <button onClick={()=>setAuthMode(authMode==='register'?'login':'register')}>{authMode==='register'?'Kirish':'Ro‘yxatdan o‘tish'}</button></p>
  </>}
  </main>
  return <main className="app">
