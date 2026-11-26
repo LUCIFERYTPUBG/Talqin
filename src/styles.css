@@ -631,3 +631,11 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 @keyframes talqinAudioFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes talqinBankRise{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
 @media(prefers-reduced-motion:reduce){.motionGlyph,.motionGlyph *,.art-audio .artIcon,.art-trophy .artIcon,.art-bank .bankStudyBuilding,.art-books .bankStudyBook{animation:none!important}}
+
+/* Micro-motion placements: live rooms, study materials and feedback */
+.liveBadge{display:inline-flex;align-items:center;gap:5px}
+.liveBadge .motionAudio{width:13px;height:13px;gap:1px}
+.liveBadge .motionAudio i{width:2px;background:currentColor}
+.materialRow .motion-book{color:#b5102d;transition:transform .25s}
+.materialRow:hover .motion-book{transform:translateY(-2px) rotate(-3deg)}
+.toast>svg{animation:talqinSparkTwinkle 1.6s ease-in-out infinite}
