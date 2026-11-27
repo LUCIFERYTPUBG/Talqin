@@ -942,3 +942,62 @@ button,input{max-width:100%}
  .login-redesign{grid-template-columns:minmax(0,.8fr) minmax(470px,1.2fr);column-gap:36px;padding-left:40px;padding-right:40px}
  .login-redesign .loginHeroVisual{height:300px}
 }
+
+
+/* AUTH REDESIGN — MOBILE PASS */
+@media(max-width:767px){
+ .login-redesign{
+  display:flex;flex-direction:column;width:100%;max-width:560px;min-height:100svh;height:auto;
+  margin:0 auto;padding:18px 20px 30px;overflow:visible;
+  background:radial-gradient(ellipse at 88% 26%,#f5dfe51b 0%,transparent 34%),#faf8fb;
+ }
+ .login-redesign:after{content:none}
+ .login-redesign:before{top:-155px;left:auto;right:-130px;transform:none;width:330px;height:330px;background:radial-gradient(circle,#df17391a 0%,transparent 68%)}
+ .login-redesign>.back{position:absolute;top:18px;left:18px;width:38px;height:38px;border-radius:13px;background:#fff;border:1px solid #eee4eb;box-shadow:0 4px 14px #25121a08}
+ .login-redesign>.brand{justify-content:center;margin:8px auto 18px;font-size:30px;letter-spacing:-2.4px}
+ .login-redesign>.brand svg{width:29px;height:29px}
+ .login-redesign>h1{font-size:26px;letter-spacing:-.9px;text-align:left;line-height:1.15;margin:0 0 8px}
+ .login-redesign>h1:after{margin:11px 0 0;width:40px;height:3px}
+ .login-redesign>.loginSubtitle{font-size:12px;line-height:1.55;text-align:left;margin:0 0 12px;max-width:none}
+ .login-redesign .loginHeroVisual{
+  width:100%;max-width:100%;height:clamp(112px,33vw,150px);min-height:112px;
+  margin:0 auto 14px;border-radius:22px;overflow:hidden;
+  background:linear-gradient(135deg,#fff9fb,#f8eaf0);border:1px solid #f0e3e9;
+  box-shadow:0 10px 24px #2b14200a;
+ }
+ .login-redesign .loginHeroGlow{width:100%;height:100%;background:radial-gradient(ellipse,#f3c9d31e 0%,transparent 70%)}
+ .login-redesign .loginHeroVisual img{width:100%;height:100%;object-fit:contain;padding:4px;filter:drop-shadow(0 6px 8px #a90d2014)}
+ .login-redesign .roleSwitch{display:flex;width:100%;margin:0 0 13px;padding:4px;border-radius:15px;background:#f0ebf1;border:1px solid #e9e1e9}
+ .login-redesign .roleSwitch button{height:43px;border-radius:11px;font-size:13px}
+ .login-redesign .roleSwitch .roleActive{box-shadow:0 5px 12px #b70f2227}
+ .login-redesign .authModeSwitch{margin:0 0 14px;padding:4px;border-radius:13px;background:#f0ebf1}
+ .login-redesign .authModeSwitch button{height:40px;border-radius:10px;font-size:12px}
+ .login-redesign .field{height:57px;border-radius:15px;margin-bottom:10px;padding:0 15px;background:#fff;border:1px solid #e9e2ea;box-shadow:0 4px 12px #2b142006}
+ .login-redesign .field input{font-size:13px}
+ .login-redesign .authOptions{margin:0 2px 14px;min-height:22px;gap:8px}
+ .login-redesign .rememberOption{font-size:11px}
+ .login-redesign .forgotLink{font-size:11px}
+ .login-redesign .authSubmit{min-height:56px;border-radius:16px;font-size:14px;margin:0;box-shadow:0 9px 20px #b70f2224}
+ .login-redesign .socialDivider{margin:19px 0 13px;font-size:10px}
+ .login-redesign .socialCircleRow{gap:15px}
+ .login-redesign .socialCircle{width:52px;height:52px}
+ .login-redesign .socialCircle .brandSvg{width:26px;height:26px}
+ .login-redesign .authBottomText{margin:18px 0 0;font-size:11px}
+ .login-redesign .authBottomText button{font-size:11px}
+ .login-redesign .teacherAccessNote{padding:13px;border-radius:15px;margin-bottom:12px}
+ .login-redesign .teacherAdminHint{font-size:11px;margin-top:12px}
+ .login-redesign .authFeedback{font-size:12px}
+}
+@media(max-width:380px){
+ .login-redesign{padding-left:16px;padding-right:16px}
+ .login-redesign>.brand{font-size:27px;margin-bottom:14px}
+ .login-redesign>h1{font-size:24px}
+ .login-redesign .loginHeroVisual{height:108px;min-height:108px}
+ .login-redesign .field{height:54px;padding:0 12px}
+ .login-redesign .roleSwitch button{height:40px}
+ .login-redesign .authSubmit{min-height:52px}
+ .login-redesign .socialCircle{width:48px;height:48px}
+}
+@media(prefers-reduced-motion:reduce){
+ .login-redesign .loginHeroVisual img,.login-redesign .field{animation:none}
+}
