@@ -879,3 +879,66 @@ button,input{max-width:100%}
  .onboard .slideText{padding:0 4px}
  .onboard .slideText h1{font-size:clamp(30px,3vw,38px)}
 }
+
+
+/* AUTH REDESIGN — DESKTOP FIRST */
+@media(min-width:1024px){
+ .login-redesign{
+  width:100%;max-width:none;min-height:100dvh;margin:0;padding:46px clamp(40px,6vw,110px) 42px;
+  display:grid;grid-template-columns:minmax(0, .92fr) minmax(560px,1.08fr);
+  grid-template-rows:78px auto auto minmax(320px,1fr);
+  align-content:center;align-items:center;column-gap:clamp(44px,7vw,120px);
+  row-gap:12px;overflow-x:hidden;overflow-y:auto;
+  background:linear-gradient(110deg,#fbf8fa 0%,#fbf8fa 44%,#f8f5f8 44%,#f8f5f8 100%);
+ }
+ .login-redesign:after{
+  content:"";position:absolute;z-index:-1;top:5.5vh;right:4vw;bottom:5.5vh;width:calc(54% - 4vw);
+  border-radius:34px;background:#fff;box-shadow:0 24px 80px #2b14200d,inset 0 0 0 1px #eee6ec;
+ }
+ .login-redesign:before{top:5%;left:21%;width:480px;height:480px;transform:none;background:radial-gradient(circle,#e51c3d14 0%,transparent 70%)}
+ .login-redesign>.back{position:absolute;top:34px;left:clamp(40px,5vw,84px);width:46px;height:46px;border-radius:15px}
+ .login-redesign>.brand{grid-column:1;grid-row:1;justify-self:center;align-self:end;margin:0 0 18px;font-size:46px;letter-spacing:-3.5px}
+ .login-redesign>.brand svg{width:42px;height:42px}
+ .login-redesign>h1{grid-column:1;grid-row:2;align-self:end;font-size:clamp(38px,3.5vw,58px);letter-spacing:-2px;margin:0 0 12px;text-align:center}
+ .login-redesign>h1:after{width:58px;height:4px;margin-top:18px}
+ .login-redesign>.loginSubtitle{grid-column:1;grid-row:3;max-width:470px;margin:0 auto;text-align:center;font-size:16px;line-height:1.75}
+ .login-redesign>.loginHeroVisual{grid-column:1;grid-row:4;width:100%;height:clamp(300px,38vw,480px);max-height:480px;margin:0 auto;align-self:center}
+ .login-redesign .loginHeroVisual img{object-fit:contain}
+ .login-redesign>.roleSwitch{grid-column:2;grid-row:1;width:min(100%,560px);justify-self:center;align-self:end;margin:0 0 16px;padding:6px;border-radius:20px}
+ .login-redesign .roleSwitch button{height:54px;font-size:15px;border-radius:15px}
+ .login-redesign .roleSwitch~*{grid-column:2;width:min(100%,560px);justify-self:center}
+ .login-redesign .roleSwitch~.authModeSwitch{margin:0 0 20px;padding:6px;border-radius:18px}
+ .login-redesign .authModeSwitch button{height:48px;font-size:14px;border-radius:13px}
+ .login-redesign .roleSwitch~.teacherAccessNote{margin:0 0 18px;padding:18px 20px}
+ .login-redesign .roleSwitch~.field{height:64px;border-radius:18px;margin-bottom:15px;padding:0 20px}
+ .login-redesign .field input{font-size:15px}
+ .login-redesign .roleSwitch~.authOptions{margin:2px 4px 20px;font-size:14px}
+ .login-redesign .rememberOption{font-size:14px}
+ .login-redesign .forgotLink{font-size:13px}
+ .login-redesign .roleSwitch~.authSubmit{min-height:64px;border-radius:20px;font-size:16px;margin-top:3px}
+ .login-redesign .authFeedback{margin:12px 0 0}
+ .login-redesign .socialDivider{margin:24px 0 18px;font-size:12px}
+ .login-redesign .socialCircleRow{gap:22px}
+ .login-redesign .socialCircle{width:64px;height:64px}
+ .login-redesign .socialCircle .brandSvg{width:32px;height:32px}
+ .login-redesign .authBottomText{margin:23px 0 0;font-size:13px}
+ .login-redesign .authBottomText button{font-size:13px}
+ .login-redesign .teacherAdminHint{font-size:13px;max-width:500px}
+}
+@media(min-width:1024px) and (max-height:800px){
+ .login-redesign{padding-top:28px;padding-bottom:26px;grid-template-rows:62px auto auto minmax(240px,1fr);row-gap:8px}
+ .login-redesign>.brand{font-size:38px;margin-bottom:12px}
+ .login-redesign>.brand svg{width:36px;height:36px}
+ .login-redesign>h1{font-size:clamp(32px,3vw,46px)}
+ .login-redesign>.loginHeroVisual{height:clamp(220px,32vw,340px)}
+ .login-redesign .roleSwitch button{height:46px}
+ .login-redesign .roleSwitch~.field{height:56px;margin-bottom:10px}
+ .login-redesign .roleSwitch~.authSubmit{min-height:56px}
+ .login-redesign .socialDivider{margin:15px 0 12px}
+ .login-redesign .socialCircle{width:54px;height:54px}
+ .login-redesign .authBottomText{margin-top:15px}
+}
+@media(min-width:1024px) and (max-width:1200px){
+ .login-redesign{grid-template-columns:minmax(0,.8fr) minmax(470px,1.2fr);column-gap:36px;padding-left:40px;padding-right:40px}
+ .login-redesign .loginHeroVisual{height:300px}
+}
