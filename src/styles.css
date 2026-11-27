@@ -112,3 +112,45 @@ button:focus-visible,input:focus-visible{outline:3px solid #cf163a40;outline-off
  .pageFooter{margin-top:10px}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+
+/* Desktop-first refinement + live 3D canvas */
+.threeHero{position:relative;width:min(100%,390px);height:300px;margin:26px auto 8px;isolation:isolate;touch-action:pan-y}
+.threeHero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.threeGlow{position:absolute;left:12%;right:12%;bottom:8%;height:24%;border-radius:50%;background:radial-gradient(ellipse,#d8173b20,transparent 70%);filter:blur(14px);z-index:0}
+@media(min-width:701px){
+ .authPage{padding:34px clamp(28px,5vw,78px) 20px;min-height:100svh}
+ .authShell{width:min(100%,1260px);grid-template-columns:minmax(0,1fr) minmax(420px,510px);gap:clamp(50px,8vw,130px)}
+ .authIntro{max-width:560px}
+ .talqinBrandLarge{font-size:39px}
+ .talqinBrandLarge svg{width:39px;height:39px}
+ .introCopy{margin-top:clamp(36px,5vh,62px);max-width:510px}
+ .introCopy h1{font-size:clamp(42px,4.3vw,62px);letter-spacing:-2.8px}
+ .introCopy p{font-size:15px;max-width:440px}
+ .threeHero{width:min(100%,450px);height:clamp(260px,31vw,390px);margin:18px 0 2px}
+ .authCard{padding:34px 36px 27px;border-radius:28px}
+ .authCardHeader h2{font-size:28px}
+ .authCardHeader p{font-size:13px}
+ .roleTabs button,.modeTabs button{height:42px;font-size:13px}
+ .formField{height:54px}
+ .formField input{font-size:14px}
+ .primaryAction{height:54px;font-size:14px}
+ .providerButton{width:50px;height:50px}
+}
+@media(min-width:1200px){
+ .authShell{grid-template-columns:minmax(0,1fr) 510px;gap:clamp(90px,10vw,160px)}
+ .authIntro{padding-left:12px}
+ .threeHero{height:360px;max-width:490px}
+}
+@media(max-width:700px){
+ .authIntro{display:block;width:100%;padding:0;margin:0 auto 5px;text-align:center}
+ .authIntro>.talqinBrandLarge{justify-content:center;font-size:30px;letter-spacing:-2px}
+ .authIntro>.talqinBrandLarge svg{width:30px;height:30px}
+ .authIntro .introCopy,.authIntro .introFoot{display:none}
+ .threeHero{width:min(100%,300px);height:140px;margin:0 auto 3px}
+ .mobileBrand{display:none}
+ .authCard{margin-top:0}
+}
+@media(max-width:380px){
+ .threeHero{height:118px}
+}
