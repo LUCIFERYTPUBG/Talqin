@@ -1115,3 +1115,41 @@ button,input{max-width:100%}
  .login-redesign .roleSwitch button{height:37px}
  .login-redesign .authSubmit{height:46px;min-height:46px}
 }
+
+
+/* FIX: prevent auth form grid from creating oversized empty rows */
+@media(min-width:768px){
+ .login-redesign{
+  grid-template-rows:none !important;
+  grid-auto-rows:min-content !important;
+  grid-auto-flow:row;
+  align-content:center;
+  row-gap:8px !important;
+ }
+ .login-redesign>.brand{grid-row:1}
+ .login-redesign>h1{grid-row:2}
+ .login-redesign>.loginSubtitle{grid-row:3}
+ .login-redesign>.loginHeroVisual{grid-row:4}
+ .login-redesign>.roleSwitch{grid-row:1}
+ .login-redesign .roleSwitch~.authModeSwitch{grid-row:2}
+ .login-redesign .roleSwitch~.field,
+ .login-redesign .roleSwitch~.authOptions,
+ .login-redesign .roleSwitch~.authSubmit,
+ .login-redesign .roleSwitch~.authFeedback,
+ .login-redesign .roleSwitch~.socialDivider,
+ .login-redesign .roleSwitch~.socialCircleRow,
+ .login-redesign .roleSwitch~.authBottomText,
+ .login-redesign .roleSwitch~.teacherAccessNote,
+ .login-redesign .roleSwitch~.teacherAdminHint{
+  grid-column:2;
+  grid-row:auto;
+  align-self:center;
+  margin-top:0;
+ }
+ .login-redesign .roleSwitch~.field{margin-bottom:0}
+ .login-redesign .roleSwitch~.authOptions{margin:2px 2px 3px}
+ .login-redesign .roleSwitch~.authSubmit{margin:0}
+ .login-redesign .roleSwitch~.socialDivider{margin:9px 0 5px}
+ .login-redesign .roleSwitch~.socialCircleRow{margin:0}
+ .login-redesign .roleSwitch~.authBottomText{margin:7px 0 0}
+}
