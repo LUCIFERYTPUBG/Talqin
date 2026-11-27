@@ -689,3 +689,114 @@ button,.primary,.skip,.roleSwitch button,.register button,.social button,.tab bu
 @media(prefers-reduced-motion:reduce){
   .login-redesign .loginHeroVisual img{animation:none!important}
 }
+
+
+/* TALQIN responsive web platform: desktop sidebar + mobile-first layout */
+html{scroll-behavior:smooth}
+body{min-width:320px}
+.app{width:100%;max-width:480px;margin:0 auto;min-height:100dvh}
+.header{width:100%}
+.home,.content{width:100%;min-width:0}
+img,svg{max-width:100%}
+button,input{max-width:100%}
+@media(min-width:600px) and (max-width:767px){
+ .app{max-width:100%;padding-bottom:86px}
+ .home{padding:22px 24px}
+ .content{padding:28px 24px}
+ .tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+ .tiles button{height:132px}
+ .bankBanner{height:150px}
+ .bankBanner .art{width:165px;height:165px}
+ .roomList,.home>.roomRow{max-width:100%}
+ .bottom{width:100%;max-width:100%;height:76px}
+}
+@media(min-width:768px){
+ .app{max-width:1600px;width:100%;margin:0 auto;padding:0 0 32px;overflow:visible;background:#faf9fb}
+ .header{height:76px;width:calc(100% - 232px);margin-left:232px;padding:0 36px;border-bottom-color:#ece7ec}
+ .header .brand{font-size:25px;letter-spacing:-1.9px}
+ .header .brand svg{width:29px;height:29px}
+ .avatar{width:42px;height:42px;font-size:13px}
+ .bottom{
+  position:fixed;left:max(0px,calc((100vw - 1600px)/2));top:76px;bottom:0;
+  transform:none;width:220px;height:auto;max-width:220px;
+  flex-direction:column;align-items:stretch;justify-content:flex-start;
+  gap:8px;padding:26px 14px max(20px,env(safe-area-inset-bottom));
+  border-top:0;border-right:1px solid #eee7ed;box-shadow:4px 0 18px #2d122006;
+  border-radius:0;background:#fff;z-index:5
+ }
+ .navOff,.navOn{flex:0 0 54px;flex-direction:row;justify-content:flex-start;gap:13px;padding:0 16px;border-radius:14px;text-align:left}
+ .navOff span,.navOn span{font-size:13px;font-weight:800}
+ .navOn{background:#fff0f3;color:#b70f22}
+ .navOff:hover{background:#faf6f8;color:#4c2d37}
+ .home{margin-left:220px;width:calc(100% - 220px);padding:30px 36px 40px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:22px;align-content:start}
+ .greeting{grid-column:1/-1;margin-bottom:24px}
+ .greeting h2{font-size:22px}
+ .greeting small{font-size:13px}
+ .userMini{width:48px;height:48px;font-size:13px}
+ .bankBanner{grid-column:1/9;height:230px;border-radius:24px;padding:30px}
+ .bankBanner b{font-size:30px}
+ .bankBanner p{font-size:14px}
+ .bankBanner .art{width:230px;height:245px;margin-right:-20px}
+ .tiles{grid-column:9/-1;grid-row:2;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 24px}
+ .tiles button{height:108px;border-radius:20px}
+ .tiles b{font-size:14px}
+ .tiles small{font-size:11px}
+ .sectionTitle{grid-column:1/9;margin-top:4px;margin-bottom:14px}
+ .sectionTitle h3{font-size:22px}
+ .sectionTitle button{font-size:12px}
+ .home>.roomRow{grid-column:1/9;padding:16px;border-radius:18px;gap:14px}
+ .roomIcon{width:48px;height:48px}
+ .roomDetails b{font-size:14px}
+ .roomDetails small{font-size:11px}
+ .liveBadge{font-size:10px;padding:7px 10px}
+ .content{margin-left:220px;width:calc(100% - 220px);max-width:1120px;padding:42px 48px}
+ .content h1{font-size:38px;letter-spacing:-1.4px}
+ .eyebrow{font-size:11px}
+ .sub{font-size:15px}
+ .roomList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .roomList .roomRow{margin:0;padding:18px}
+ .content>.primary{max-width:320px;margin-top:22px}
+ .quizHero{max-width:680px;padding:20px}
+ .materialHero{max-width:760px;height:260px}
+ .materialRow{max-width:760px;padding:18px}
+ .communityHero{max-width:760px;height:220px}
+ .member{max-width:760px}
+ .profileCard,.stats{max-width:760px}
+ .roomOverlay,.quizOverlay{align-items:center;padding:28px}
+ .roomModal,.quizCard{width:min(100%,620px);border-radius:28px;max-height:min(88dvh,900px);padding:28px}
+ .roomModal h2{max-width:460px;font-size:26px}
+ .speaker{height:280px}
+ .quizCard h2{font-size:24px}
+ .answers button{min-height:58px;font-size:14px}
+}
+@media(min-width:1200px){
+ .home{padding:38px 52px 48px;column-gap:28px}
+ .bankBanner{height:270px}
+ .bankBanner .art{width:270px;height:285px}
+ .tiles button{height:122px}
+ .content{padding:50px 64px}
+}
+@media(max-width:767px){
+ .app{max-width:480px}
+ .header{height:64px}
+ .bottom{width:min(100%,480px)}
+ .home{padding:16px}
+ .content{padding:25px 18px}
+ .roomOverlay,.quizOverlay{padding:10px}
+ .roomModal,.quizCard{max-height:calc(100dvh - 20px);overflow-y:auto}
+}
+@media(max-width:380px){
+ .login-redesign{padding-left:18px;padding-right:18px}
+ .login-redesign .brandLarge{font-size:32px}
+ .login-redesign h1{font-size:24px}
+ .login-redesign .loginHeroVisual{height:100px;min-height:100px}
+ .login-redesign .field{height:54px;padding:0 13px}
+ .login-redesign .socialCircle{width:54px;height:54px}
+ .login-redesign .socialCircleRow{gap:15px}
+ .bankBanner{padding:14px}
+ .bankBanner b{font-size:18px}
+ .bankBanner .art{width:105px}
+ .roomRow{gap:7px;padding:9px}
+ .liveBadge{padding:4px 5px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
