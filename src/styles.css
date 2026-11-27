@@ -1153,3 +1153,40 @@ button,input{max-width:100%}
  .login-redesign .roleSwitch~.socialCircleRow{margin:0}
  .login-redesign .roleSwitch~.authBottomText{margin:7px 0 0}
 }
+
+
+/* Final structural layout: keep auth controls together as one compact panel */
+@media(min-width:768px){
+ .login-redesign{display:grid;grid-template-columns:minmax(260px,.85fr) minmax(380px,1fr);column-gap:clamp(26px,4vw,64px)}
+ .login-redesign>.brand,.login-redesign>h1,.login-redesign>.loginSubtitle,.login-redesign>.loginHeroVisual{grid-column:1}
+ .login-redesign>.brand{grid-row:1}
+ .login-redesign>h1{grid-row:2}
+ .login-redesign>.loginSubtitle{grid-row:3}
+ .login-redesign>.loginHeroVisual{grid-row:4}
+ .login-redesign>.authFormPanel{
+  grid-column:2;grid-row:1 / span 4;align-self:center;justify-self:center;
+  position:relative;z-index:1;display:flex;flex-direction:column;align-items:stretch;
+  width:min(100%,430px);min-width:0;padding:24px 26px;
+  border:1px solid #eee6ed;border-radius:24px;background:#fff;
+  box-shadow:0 18px 48px #32132108;gap:9px;
+ }
+ .login-redesign>.authFormPanel:before{content:none}
+ .login-redesign>.authFormPanel>*{width:100%;max-width:none;grid-column:auto;grid-row:auto;justify-self:auto;align-self:auto;margin-top:0;margin-bottom:0}
+ .login-redesign .authFormPanel .roleSwitch{margin:0 0 2px}
+ .login-redesign .authFormPanel .authModeSwitch{margin:0 0 2px}
+ .login-redesign .authFormPanel .field{height:50px;min-height:50px;margin:0;padding:0 14px}
+ .login-redesign .authFormPanel .authOptions{margin:2px 0 4px}
+ .login-redesign .authFormPanel .authSubmit{height:50px;min-height:50px;margin:0}
+ .login-redesign .authFormPanel .socialDivider{margin:8px 0 4px}
+ .login-redesign .authFormPanel .socialCircleRow{margin:0}
+ .login-redesign .authFormPanel .authBottomText{margin:5px 0 0}
+ .login-redesign .authFormPanel .teacherAccessNote{margin:0}
+ .login-redesign .authFormPanel .teacherAdminHint{margin:4px 0 0}
+}
+@media(min-width:768px) and (max-width:1023px){
+ .login-redesign{grid-template-columns:minmax(230px,.78fr) minmax(350px,1.22fr);column-gap:22px;padding:28px 22px}
+ .login-redesign>.authFormPanel{padding:20px 18px}
+}
+@media(max-width:767px){
+ .login-redesign>.authFormPanel{display:contents}
+}
